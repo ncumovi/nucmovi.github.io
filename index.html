@@ -1,0 +1,2830 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="心无所恃 随遇而安">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Movi Blog">
+<meta property="og:url" content="http://ncumovi.com/index.html">
+<meta property="og:site_name" content="Movi Blog">
+<meta property="og:description" content="心无所恃 随遇而安">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Movi Blog">
+<meta name="twitter:description" content="心无所恃 随遇而安">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://ncumovi.com/"/>
+
+
+
+
+
+  <title>Movi Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Movi Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">志当存高远</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2018/11/09/ideal-tomcat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MoviLee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/movi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Movi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/09/ideal-tomcat/" itemprop="url">ideal启动tomcat</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-09T13:59:19+08:00">
+                2018-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/11/09/ideal-tomcat/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://ncumovi.com/2018/11/09/ideal-tomcat/" class="cy_cmt_count" data-xid="2018/11/09/ideal-tomcat/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                   分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="\assets\js\APlayer.min.js"> </script><h2 id="ideal启动tomcat环境前置条件"><a href="#ideal启动tomcat环境前置条件" class="headerlink" title="ideal启动tomcat环境前置条件"></a>ideal启动tomcat环境前置条件</h2><p>前置条件就是你安装了IDEA编辑器、JDK以及Tomcat。同时本地要有一个java项目，否则拿什么去启动，当然你也可以本地新建一个，不过不在本次讲解范畴之内。。。</p>
+<h2 id="1、配置项目"><a href="#1、配置项目" class="headerlink" title="1、配置项目"></a>1、配置项目</h2><h4 id="1-1、打开project-structure进行配置"><a href="#1-1、打开project-structure进行配置" class="headerlink" title="1-1、打开project structure进行配置"></a>1-1、打开project structure进行配置</h4><p><img src="/img/ideal-tomcat/open_project_structure.png" alt="打开项目结构进行设置"></p>
+<h4 id="1-2、project的配置"><a href="#1-2、project的配置" class="headerlink" title="1-2、project的配置"></a>1-2、project的配置</h4><p>1、项目名称随便写，一般会默认当前项目名称</p>
+<p>2、选择安装好的jdk</p>
+<p>3、选择项目语言级别，这里选8，否则编译会报错，有兴趣的童鞋可以尝试一下</p>
+<p>4、选择项目编译输出，项目在编译的时候会有一个输出项目，我们这里直接选择当前项目目录下的<strong>out</strong>文件夹，没有的话可以直接编辑成<strong>/当前项目/out</strong>,这里的out文件夹在后面编译的时候回生成。</p>
+<p><img src="/img/ideal-tomcat/project.png" alt="project配置"></p>
+<h4 id="1-3、module的配置"><a href="#1-3、module的配置" class="headerlink" title="1-3、module的配置"></a>1-3、module的配置</h4><p><img src="/img/ideal-tomcat/module.png" alt="module"></p>
+<p>1、点开module，这里ideal已经自动帮我们加载好了我们的项目</p>
+<p>2、点击source目录，然后选择我们要运行的java目录，也就时项目目录下<strong>src\main\java</strong>,将其作为编译的资源文件</p>
+<p><img src="/img/ideal-tomcat/moudle_source.png" alt="配置module的source"></p>
+<p>这里选择第一个，也就是我们项目编译输出的目录<strong>out</strong></p>
+<p><img src="/img/ideal-tomcat/module_path.png" alt="配置module的path"></p>
+<p>module里面的dependencies里面不用选择，ideal会帮我们自动填好，直接ok行</p>
+<p><img src="/img/ideal-tomcat/module_dependenciespng.png" alt="配置module的dependencies"></p>
+<h4 id="1-4、libraries的配置"><a href="#1-4、libraries的配置" class="headerlink" title="1-4、libraries的配置"></a>1-4、libraries的配置</h4><p>新增java,选择当前项目运行所依赖的jar包</p>
+<p><img src="/img/ideal-tomcat/libraries.png" alt="新增依赖"><br><img src="/img/ideal-tomcat/library_dep.png" alt="新增依赖"><br><img src="/img/ideal-tomcat/choose_module.png" alt="选择当前module"></p>
+<h4 id="1-5、Facets的配置"><a href="#1-5、Facets的配置" class="headerlink" title="1-5、Facets的配置"></a>1-5、Facets的配置</h4><p>点击<strong>+</strong>新增web</p>
+<p><img src="/img/ideal-tomcat/facets_web.png" alt="新增web"></p>
+<p><img src="/img/ideal-tomcat/facet_web1.png" alt="选择当前项目模块"></p>
+<h4 id="1-6、Artifacts的配置"><a href="#1-6、Artifacts的配置" class="headerlink" title="1-6、Artifacts的配置"></a>1-6、Artifacts的配置</h4><p>点击<strong>+</strong>新增,选择Web Application:Exploded,然后选择from modules</p>
+<p><img src="/img/ideal-tomcat/artifacts_add.png" alt="新增artifacts"></p>
+<p>选择当前项目</p>
+<p><img src="/img/ideal-tomcat/art_modules.png" alt="选择模块"></p>
+<h2 id="2、配置tomcat"><a href="#2、配置tomcat" class="headerlink" title="2、配置tomcat"></a>2、配置tomcat</h2><p>点击file，打开设置选项，搜索<strong>Application Server</strong>,然后选则server，添加<strong>tomcat server</strong>，选择tomcat的安装路径</p>
+<p><img src="/img/ideal-tomcat/tomcat_config1.png" alt="添加tomcat server"></p>
+<p><img src="/img/ideal-tomcat/tomcat_path.png" alt="选择tomcat路径"></p>
+<p>点击add configurations，配置tomcat</p>
+<p><img src="/img/ideal-tomcat/add_config.png" alt="add configurations"></p>
+<p>点击<strong>+</strong>选择tomcat server,选择本地local。</p>
+<p><img src="/img/ideal-tomcat/tomcat_add1.png" alt="新增本地tomcat"></p>
+<p>输入tomcat的名称</p>
+<p><img src="/img/ideal-tomcat/tomat_last.png" alt="输入tomat的名称"></p>
+<h2 id="3、配置完成-大功告成。"><a href="#3、配置完成-大功告成。" class="headerlink" title="3、配置完成,大功告成。"></a>3、配置完成,大功告成。</h2><p><img src="/img/ideal-tomcat/tomcat_run.png" alt="点击run开启tomcat"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2018/11/09/pdf-editor/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MoviLee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/movi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Movi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/09/pdf-editor/" itemprop="url">Foxit PDF Editor</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-09T09:39:19+08:00">
+                2018-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/11/09/pdf-editor/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://ncumovi.com/2018/11/09/pdf-editor/" class="cy_cmt_count" data-xid="2018/11/09/pdf-editor/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                   分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="\assets\js\APlayer.min.js"> </script><h2 id="Foxit-PDF-Editor简介"><a href="#Foxit-PDF-Editor简介" class="headerlink" title="Foxit PDF Editor简介"></a>Foxit PDF Editor简介</h2><p>foxit pdf editor破解版是一款真正意义上的PDF文档编辑软件。foxit pdf editor破解版不像其他编辑软件只能够简单的编辑PDF的注释以及对一些界面有限的修改，而是对PDF文档的内容进行各种修改，比如：图片，文字，排版等等。foxit pdf editor破解版不但能够修改内容，还能够编辑页面，如：导入、导出、插入、删除等等。完成对文档的编辑后，你还能够对有结果的PDF文档进行保存，打印，另存等操作。foxit pdf editor破解版是你在使用PDF文档不错的选择。</p>
+<h2 id="Foxit-PDF-Editor的下载及安装"><a href="#Foxit-PDF-Editor的下载及安装" class="headerlink" title="Foxit PDF Editor的下载及安装"></a><a href="http://www.3322.cc/soft/4738.html" target="_blank" rel="noopener">Foxit PDF Editor的下载及安装</a></h2><p>将下载好的包解压，双击FoxitPDFEditor.exe文件进行安装，可以自定义安装，也可以一键安装</p>
+<h2 id="2、Foxit-PDF-Editor的使用"><a href="#2、Foxit-PDF-Editor的使用" class="headerlink" title="2、Foxit PDF Editor的使用"></a>2、Foxit PDF Editor的使用</h2><h4 id="2-1、选择文件，打开你要编辑的pdf文档"><a href="#2-1、选择文件，打开你要编辑的pdf文档" class="headerlink" title="2-1、选择文件，打开你要编辑的pdf文档"></a>2-1、选择文件，打开你要编辑的pdf文档</h4><p><img src="/img/pdf-editor/open.png" alt="open"></p>
+<h4 id="2-2、选择你要编辑的文字对象"><a href="#2-2、选择你要编辑的文字对象" class="headerlink" title="2-2、选择你要编辑的文字对象"></a>2-2、选择你要编辑的文字对象</h4><p><img src="/img/pdf-editor/delete.png" alt="delete"></p>
+<h4 id="2-3、添加新的文本，点击导入windows字体，选择宋体"><a href="#2-3、添加新的文本，点击导入windows字体，选择宋体" class="headerlink" title="2-3、添加新的文本，点击导入windows字体，选择宋体"></a>2-3、添加新的文本，点击导入windows字体，选择宋体</h4><p><img src="/img/pdf-editor/add1.png" alt="add"></p>
+<h4 id="2-4、选择宋体"><a href="#2-4、选择宋体" class="headerlink" title="2-4、选择宋体"></a>2-4、选择宋体</h4><p><img src="/img/pdf-editor/add2.png" alt="add2"></p>
+<h4 id="2-5、输入你想要输入的文本，然后确定"><a href="#2-5、输入你想要输入的文本，然后确定" class="headerlink" title="2-5、输入你想要输入的文本，然后确定"></a>2-5、输入你想要输入的文本，然后确定</h4><p><img src="/img/pdf-editor/add_txt.png" alt="add_txt"></p>
+<h4 id="2-6、鼠标左键选择刚刚插入的文本，按住不放，同时移动鼠标拖拽到想要放置的位置"><a href="#2-6、鼠标左键选择刚刚插入的文本，按住不放，同时移动鼠标拖拽到想要放置的位置" class="headerlink" title="2-6、鼠标左键选择刚刚插入的文本，按住不放，同时移动鼠标拖拽到想要放置的位置"></a>2-6、鼠标左键选择刚刚插入的文本，按住不放，同时移动鼠标拖拽到想要放置的位置</h4><p><img src="/img/pdf-editor/drag.png" alt="drag"></p>
+<h4 id="2-7、右边的属性可以改变字体大小等"><a href="#2-7、右边的属性可以改变字体大小等" class="headerlink" title="2-7、右边的属性可以改变字体大小等"></a>2-7、右边的属性可以改变字体大小等</h4><p><img src="/img/pdf-editor/font.png" alt="font"></p>
+<h4 id="2-8、最后点击左上角的保存按钮就可以大功告成了"><a href="#2-8、最后点击左上角的保存按钮就可以大功告成了" class="headerlink" title="2-8、最后点击左上角的保存按钮就可以大功告成了"></a>2-8、最后点击左上角的保存按钮就可以大功告成了</h4><p><img src="/img/pdf-editor/save.png" alt="save"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2018/11/07/sql-server/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MoviLee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/movi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Movi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/07/sql-server/" itemprop="url">Navicat连接sqlServer</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T10:32:19+08:00">
+                2018-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/11/07/sql-server/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://ncumovi.com/2018/11/07/sql-server/" class="cy_cmt_count" data-xid="2018/11/07/sql-server/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                   分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="\assets\js\APlayer.min.js"> </script><h2 id="Navicat的下载及安装"><a href="#Navicat的下载及安装" class="headerlink" title="Navicat的下载及安装"></a>Navicat的下载及安装</h2><h4 id="1、Navicat下载"><a href="#1、Navicat下载" class="headerlink" title="1、Navicat下载"></a>1、<a href="http://www.formysql.com/" target="_blank" rel="noopener">Navicat下载</a></h4><p>当然也可以下载破解版的，百搭一下，大把资源。</p>
+<h4 id="2、Navicat的安装"><a href="#2、Navicat的安装" class="headerlink" title="2、Navicat的安装"></a>2、Navicat的安装</h4><p><a href="https://blog.csdn.net/pdcfighting/article/details/81669537" target="_blank" rel="noopener">一路傻瓜式的安装即可</a></p>
+<h2 id="2、Navicat创建sql-server连接"><a href="#2、Navicat创建sql-server连接" class="headerlink" title="2、Navicat创建sql server连接"></a>2、<a href="https://jingyan.baidu.com/article/48b558e32f2bb67f38c09a01.html" target="_blank" rel="noopener">Navicat创建sql server连接</a></h2><p>   <img src="/img/sql-server/create_connection.png" alt="创建连接"></p>
+<p>   注：主机名或ip地址和端口之间用’,’隔开。如：127.0.0.1,5050</p>
+<h2 id="3、Navicat连接sql-server遇到的问题"><a href="#3、Navicat连接sql-server遇到的问题" class="headerlink" title="3、Navicat连接sql server遇到的问题"></a>3、Navicat连接sql server遇到的问题</h2><h4 id="3-1、提示安装sql-server-native-client"><a href="#3-1、提示安装sql-server-native-client" class="headerlink" title="3-1、提示安装sql server native client"></a>3-1、提示安装sql server native client</h4><pre><code>navicat自带sqlncli_x64.msi(64位的)，就在安装目录下，安装后问题解决！
+</code></pre><h4 id="3-2、安装sqlncli-x64-msi提示-0x80070422错误"><a href="#3-2、安装sqlncli-x64-msi提示-0x80070422错误" class="headerlink" title="3-2、安装sqlncli_x64.msi提示..0x80070422错误"></a>3-2、<a href="http://www.win7zhijia.cn/jiaocheng/win7_10193.html" target="_blank" rel="noopener">安装sqlncli_x64.msi提示<strong>..0x80070422</strong>错误</a></h4><pre><code>这个安装失败是因为系统window update被禁用了，需要window + R 打开窗口运行service.msc,如下图所示：
+</code></pre><p><img src="/img/sql-server/service.png" alt="service"></p>
+<pre><code>找到Window Update服务，将禁用改为手动或者自动，然后确定并应用
+</code></pre><p><img src="/img/sql-server/windows_update.png" alt="windwo Update"></p>
+<h4 id="3-3、重新再navicat上面连接sql-server数据库即可"><a href="#3-3、重新再navicat上面连接sql-server数据库即可" class="headerlink" title="3-3、重新再navicat上面连接sql server数据库即可"></a>3-3、重新再navicat上面连接sql server数据库即可</h4>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2018/10/31/django/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MoviLee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/movi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Movi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/31/django/" itemprop="url">使用django框架搭建环境遇到的坑</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-31T16:44:19+08:00">
+                2018-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/后台/" itemprop="url" rel="index">
+                    <span itemprop="name">后台</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/10/31/django/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://ncumovi.com/2018/10/31/django/" class="cy_cmt_count" data-xid="2018/10/31/django/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                   分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="\assets\js\APlayer.min.js"> </script><h4 id="数据库的迁移"><a href="#数据库的迁移" class="headerlink" title="数据库的迁移"></a>数据库的迁移</h4><p>1、在你不适用自带的sqlite3数据库时，django会要求你将django自带的一些表迁移到你现有的数据库中</p>
+<pre><code>python manage.py migrate
+</code></pre><p>2、这个时候可能会问你安装了mysql客户端没</p>
+<pre><code>Did you install mysqlclient?
+</code></pre><p>3、然后运行 </p>
+<pre><code>pip install mysqlclient
+
+又报错 Microsoft vistudo C++ 14.0 is required
+</code></pre><p>4、找了一堆资料，安装了Visual Studio 2017，然而并没有什么卵用，后来又查资料说可能是兼容性的问题，因此需要直接安装<a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#mysqlclient" target="_blank" rel="noopener">mysqlclent编译包</a>，然后下载资源，cp后面的数字代表python版本号。</p>
+<p>5、最好将刚刚下载的资源放到你的项目目录里面，然后</p>
+<pre><code>python install mysqlclient‑1.3.13‑cp37‑cp37m‑win_amd64.whl
+</code></pre><p>终于黄天不负有心人，成功安装了mysqlclient</p>
+<p>6、运行以下命令，迁移数据库</p>
+<pre><code>python manage.py migrate
+</code></pre><p>成功迁移</p>
+<h4 id="创建model"><a href="#创建model" class="headerlink" title="创建model"></a>创建model</h4><p>1、在自己创建的项目包(polls)中，编辑models.py </p>
+<pre><code>from django.db import models
+
+class Question(models.Model):
+    question_text = models.CharField(max_length=200)
+    pub_date = models.DateTimeField(&apos;date published&apos;)
+
+class Choice(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    choice_text = models.CharField(max_length=200)
+    votes = models.IntegerField(default=0)
+</code></pre><p>2、在setings.py里面加入我们创建的项目apps.py</p>
+<pre><code>INSTALLED_APPS = [
+    &apos;polls.apps.PollsConfig&apos;,
+    &apos;django.contrib.admin&apos; - 管理站点。你很快就会用到它。
+    &apos;django.contrib.auth&apos; - 认证系统。
+    &apos;django.contrib.contenttypes&apos; - 内容类型的框架。
+    &apos;django.contrib.sessions&apos; - 会话框架。
+    &apos;django.contrib.messages&apos; - 消息传递框架。
+    &apos;django.contrib.staticfiles&apos; - 用于管理静态文件的框架。
+]
+</code></pre><p>3、生产迁移数据库的初始数据(<strong>polls/0001_inital.py</strong>)</p>
+<pre><code>py manage.py makemigrations polls
+</code></pre><p>4、在命令窗口生产创建表格以及相关字段的sql语句</p>
+<pre><code>py manage.py makemigrations polls 0001
+</code></pre><p>5、 运行以下命令则将生成表格以及相关字段，同时迁移到我们自己创建的数据库中 </p>
+<pre><code>py manage.py migrate
+</code></pre><h4 id="创建超级用户"><a href="#创建超级用户" class="headerlink" title="创建超级用户"></a>创建超级用户</h4><pre><code>py manage.py createsuperuser
+
+Username: admin
+
+Email address: admin@example.com
+
+Password: **********
+Password (again): *********
+Superuser created successfully
+</code></pre><p>注：输入密码没反应，窗口没任何显示，一片空白，其实已经输入了，只是没有显示，输完直接回车，再输入回车就会创建ok了。</p>
+<h4 id="时区的设置"><a href="#时区的设置" class="headerlink" title="时区的设置"></a>时区的设置</h4><p>django默认是英文，时区是UTC</p>
+<pre><code>LANGUAGE_CODE = &apos;en-us&apos;
+
+TIME_ZONE = &apos;UTC&apos;
+</code></pre><p>语言改为中文(亲测改成zh-cn无效)，时区改为中国</p>
+<pre><code>LANGUAGE_CODE = &apos;zh-Hans&apos;
+
+TIME_ZONE = &apos;Asia/Shanghai&apos;
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2018/10/31/mysql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MoviLee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/movi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Movi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/31/mysql/" itemprop="url">mysql安装以及配置和启动</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-31T10:52:19+08:00">
+                2018-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/后台/" itemprop="url" rel="index">
+                    <span itemprop="name">后台</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/10/31/mysql/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://ncumovi.com/2018/10/31/mysql/" class="cy_cmt_count" data-xid="2018/10/31/mysql/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                   分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="\assets\js\APlayer.min.js"> </script><h2 id="mysql的下载及安装"><a href="#mysql的下载及安装" class="headerlink" title="mysql的下载及安装"></a>mysql的下载及安装</h2><h4 id="1、mysql的下载"><a href="#1、mysql的下载" class="headerlink" title="1、mysql的下载"></a>1、mysql的下载</h4><p> <a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">mysql下载地址</a></p>
+<p> 选择对应的下载文件。（我电脑是64位，所以这下载的是64位的下载文件）</p>
+<h4 id="2、mysql的安装"><a href="#2、mysql的安装" class="headerlink" title="2、mysql的安装"></a>2、mysql的安装</h4><h4 id="2-1、msi格式的"><a href="#2-1、msi格式的" class="headerlink" title="2-1、msi格式的"></a>2-1、msi格式的</h4><p>直接点击安装，按照它给出的安装提示进行安装<br></p>
+<h4 id="2-2、zip格式的"><a href="#2-2、zip格式的" class="headerlink" title="2-2、zip格式的"></a>2-2、zip格式的</h4><p>zip格式是自己解压，解压缩之后其实MySQL就可以使用了。</p>
+<h2 id="2、mysql的启动"><a href="#2、mysql的启动" class="headerlink" title="2、mysql的启动"></a>2、mysql的启动</h2><pre><code>2-1、找到mysql的安装目录 **D:\tool\mysql-5.6.42-winx64\bin**
+
+2-2、双击mysqld.exe启动mysql服务
+
+2-3、启动cmd命令提示窗，cd到bin目录下，输入mysql -u root -p，并回车，
+
+这个时候提示输入密码，一般初始密码为空，直接回车就进入mysql服务
+</code></pre><h2 id="3、用户和数据库的创建以及相关操作"><a href="#3、用户和数据库的创建以及相关操作" class="headerlink" title="3、用户和数据库的创建以及相关操作"></a>3、<a href="https://www.cnblogs.com/w-wfy/p/6487460.html" target="_blank" rel="noopener">用户和数据库的创建以及相关操作</a></h2><h4 id="3-1、数据库的创建"><a href="#3-1、数据库的创建" class="headerlink" title="3-1、数据库的创建"></a>3-1、数据库的创建</h4><pre><code>create database mydatabase;
+</code></pre><h4 id="3-2、创建用户"><a href="#3-2、创建用户" class="headerlink" title="3-2、创建用户"></a>3-2、创建用户</h4><pre><code>insert into mysql.user(Host,User,Password) values(&quot;localhost&quot;,&quot;test&quot;,password(&quot;1234&quot;));
+</code></pre><p>注意：此处的”localhost”，是指该用户只能在本地登录，不能在另外一台机器上远程登录。如果想远程登录的话，将”localhost”改为”%”，表示在任何一台电脑上都可以登录。也可以指定某台机器可以远程登录</p>
+<h4 id="3-3、为用户授权"><a href="#3-3、为用户授权" class="headerlink" title="3-3、为用户授权"></a>3-3、为用户授权</h4><pre><code>授权格式：grant 权限 on 数据库.* to 用户名@登录主机 identified by &quot;密码&quot;;
+
+授权test用户拥有testDB数据库的所有权限（某个数据库的所有权限）
+grant all privileges on testDB.* to test@localhost identified by &apos;1234&apos;;
+
+如果想指定部分权限给一用户:
+grant select,update on testDB.* to test@localhost identified by &apos;1234&apos;;
+
+授权test用户拥有所有数据库的某些权限： 　
+grant select,delete,update,create,drop on *.* to test@&quot;%&quot; identified by &quot;1234&quot;;
+</code></pre><p>注：如果授权不成功，则先执行 <strong>flush privileges</strong>（刷新系统权限），然后再授权</p>
+<h4 id="4、用户登录"><a href="#4、用户登录" class="headerlink" title="4、用户登录"></a>4、用户登录</h4><pre><code>exit; //退出当前用户
+
+mysql -u test -p;
+然后输入密码登录
+</code></pre><p>注：上一步的授权里不要用<strong>test@’%’</strong>，而是用<strong>test@localhost</strong>,否则会被拒绝登录，<a href="https://blog.csdn.net/silyvin/article/details/53351146" target="_blank" rel="noopener">这里有说明</a>。</p>
+<h4 id="5、第三方工具软件的接入"><a href="#5、第三方工具软件的接入" class="headerlink" title="5、第三方工具软件的接入"></a>5、<a href="https://jingyan.baidu.com/article/495ba841c1731b38b30ede84.html" target="_blank" rel="noopener">第三方工具软件的接入</a></h4><pre><code>创建mysql连接，输入刚刚创建的用户名和密码就可以成功连接到我们创建的数据库，
+
+然后就可嘿嘿嘿的创建各种表了,从而进行各种操作了。
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2018/07/01/add-react-to-vue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MoviLee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/movi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Movi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/01/add-react-to-vue/" itemprop="url">在现有Vue项目中引入React</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-01T15:24:19+08:00">
+                2018-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/07/01/add-react-to-vue/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://ncumovi.com/2018/07/01/add-react-to-vue/" class="cy_cmt_count" data-xid="2018/07/01/add-react-to-vue/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                   分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="\assets\js\APlayer.min.js"> </script><h2 id="安装相应依赖以及转码打包的工具"><a href="#安装相应依赖以及转码打包的工具" class="headerlink" title="安装相应依赖以及转码打包的工具"></a>安装相应依赖以及转码打包的工具</h2><p>运行以下代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install  --save-dev react react-dom babel-cli babel-preset-react</span><br></pre></td></tr></table></figure></p>
+<p>将依赖写入package.json文件中，如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"react"</span>: <span class="string">"^16.4.1"</span>,</span><br><span class="line"><span class="string">"react-dom"</span>: <span class="string">"^16.4.1"</span>,</span><br><span class="line"><span class="string">"babel-cli"</span>: <span class="string">"^6.26.0"</span>,</span><br><span class="line"><span class="string">"babel-preset-react"</span>: <span class="string">"^6.24.1"</span>,</span><br></pre></td></tr></table></figure></p>
+<h2 id="修改-babelrc文件如下："><a href="#修改-babelrc文件如下：" class="headerlink" title="修改.babelrc文件如下："></a>修改<strong>.babelrc</strong>文件如下：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"presets"</span>: [</span><br><span class="line">    [<span class="string">"env"</span>, &#123;</span><br><span class="line">      <span class="string">"modules"</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="string">"targets"</span>: &#123;</span><br><span class="line">        <span class="string">"browsers"</span>: [<span class="string">"&gt; 1%"</span>, <span class="string">"last 2 versions"</span>, <span class="string">"not ie &lt;= 8"</span>]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">"stage-2"</span>,</span><br><span class="line">    <span class="string">"react"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"plugins"</span>: [<span class="string">"transform-runtime"</span>],</span><br><span class="line">  <span class="string">"comments"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="string">"env"</span>: &#123;</span><br><span class="line">    <span class="string">"test"</span>: &#123;</span><br><span class="line">      <span class="string">"presets"</span>: [<span class="string">"env"</span>, <span class="string">"stage-2"</span>,<span class="string">"react"</span>],</span><br><span class="line">      <span class="string">"plugins"</span>: [ <span class="string">"istanbul"</span> ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="最后在Vue文件中引入react相应组件"><a href="#最后在Vue文件中引入react相应组件" class="headerlink" title="最后在Vue文件中引入react相应组件"></a>最后在Vue文件中引入react相应组件</h2><pre><code>import xx.js from ./xx
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2018/02/09/js-module/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MoviLee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/movi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Movi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/09/js-module/" itemprop="url">js模块化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-09T14:25:36+08:00">
+                2018-02-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/02/09/js-module/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://ncumovi.com/2018/02/09/js-module/" class="cy_cmt_count" data-xid="2018/02/09/js-module/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                   分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="\assets\js\APlayer.min.js"> </script><h2 id="Commonjs"><a href="#Commonjs" class="headerlink" title="Commonjs"></a>Commonjs</h2><ul>
+<li><p>Node.js采用了这个规范。 根据CommonJS规范，一个单独的文件就是一个模块。模块的输出必须通过module.exports导出对外的变量或接口，加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的exports对象。</p>
+</li>
+<li><p>在网上看了很多的Commonjs模块的定义，但是去没有说要在node的环境中，否则会报错<strong>module is not defined</strong>。只有在node环境中，每一个node.js执行文件，都自动创建一个module对象，同时，module对象会创建一个叫exports的属性，初始化的值是 {}。而exports是引用 module.exports的值。module.exports 被改变的时候，exports不会被改变，当模块导出的时候，真正导出的执行是module.exports，而不是exports。具体可以参考 <a href="https://www.jianshu.com/p/7b9f84dbb576" target="_blank" rel="noopener">NodeJS中的modu.exports和exports</a></p>
+</li>
+</ul>
+<h4 id="AMD规范"><a href="#AMD规范" class="headerlink" title="AMD规范"></a>AMD规范</h4><ul>
+<li><p>相比服务器端广泛使同步加载的CommonJS规范, AMD（异步模块定义）是为浏览器环境设计的。</p>
+</li>
+<li><p>requirejs即为遵循AMD规范的模块化工具。通过define方法，将代码定义为模块，然后再require进来</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//a.js  定义模块</span><br><span class="line">define(<span class="keyword">function</span>(require, exports, module) &#123;</span><br><span class="line">    //  导出模块内容</span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">        a :<span class="string">'movi'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//b.js 加载模块</span><br><span class="line">require([<span class="string">'a'</span>], <span class="keyword">function</span> (a) &#123;</span><br><span class="line">    console.log(a)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="CommonJS与AMD"><a href="#CommonJS与AMD" class="headerlink" title="CommonJS与AMD"></a>CommonJS与AMD</h4><p>上面也提到了CommonJS是同步加载模块，也就是说只有加载完成才能执行后续的操作，而AMD是异步加载，允许在回调函数中处理。</p>
+<p>由于Node.js主要用于服务器编程，模块文件一般都已经存在于本地硬盘，所以加载起来比较快，不用考虑非同步加载的方式，所以CommonJS规范比较适用。但是，如果是浏览器环境，要从服务器端加载模块，这时就必须采用非同步模式，因此浏览器端一般采用AMD规范。</p>
+<p>兼容CommonJS规范的AMD模块输出，这时候需要在定义模块的define方法中这样写：</p>
+<pre><code>define(function(require,exports,module){
+    var a = require(&quot;a&quot;);
+    var b = require(&quot;b&quot;);
+    ……
+    exports.c = function(){
+
+    }
+})
+</code></pre><h4 id="ES6-Modules"><a href="#ES6-Modules" class="headerlink" title="ES6 Modules"></a>ES6 Modules</h4><p>ES6语法里面的模块输出<strong>export</strong>和加载模块<strong>import</strong>。之前是在vue的脚手架里面开发，用import和export的时候比较多。因为是ES6语法里面的，所以是无法直接在html页面中使用的，必须要在脚手架或者经过webpack编译打包以后才能使用。</p>
+<p>导出模块 a.js</p>
+<pre><code>//导出变量
+export var color = &quot;red&quot;;
+export let name = &quot;cz&quot;;
+export const age = 25;
+
+//导出函数
+export function add(num1,num2){
+    return num1+num2;
+}
+</code></pre><p>导入模块 b.js</p>
+<pre><code>import { color,add } from &quot;./a.js&quot;
+</code></pre><p>可参考<a href="http://blog.csdn.net/crystal6918/article/details/74906757" target="_blank" rel="noopener">CommonJS、requirejs、ES6的对比</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2018/02/05/desk-appliction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MoviLee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/movi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Movi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/05/desk-appliction/" itemprop="url">使用electron打包桌面应用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-05T10:31:19+08:00">
+                2018-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/02/05/desk-appliction/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://ncumovi.com/2018/02/05/desk-appliction/" class="cy_cmt_count" data-xid="2018/02/05/desk-appliction/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                   分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="\assets\js\APlayer.min.js"> </script><h2 id="项目代码"><a href="#项目代码" class="headerlink" title="项目代码"></a>项目代码</h2><p><a href="https://github.com/ncumovi/gallery-desk-application" target="_blank" rel="noopener">github仓库代码</a></p>
+<h2 id="vue项目"><a href="#vue项目" class="headerlink" title="vue项目"></a>vue项目</h2><p>确保自己有一个vue项目，可以是vue脚手架工程目录，也可以是已经生成的静态资源文件</p>
+<h2 id="electron安装与使用"><a href="#electron安装与使用" class="headerlink" title="electron安装与使用"></a>electron安装与使用</h2><h4 id="安装electron以及相关工具"><a href="#安装electron以及相关工具" class="headerlink" title="安装electron以及相关工具"></a>安装electron以及相关工具</h4><p>在项目根目录下面运行<strong>npm install electron –save-dev</strong> <a href="https://electronjs.org/" target="_blank" rel="noopener">安装electron</a></p>
+<p><strong>npm install electron-packager –save-dev</strong> <a href="https://github.com/electron-userland/electron-packager" target="_blank" rel="noopener">安装exe打包工具</a></p>
+<p><strong>npm install grunt –save-dev</strong> 安装grunt用于打包可安装的exe</p>
+<p><strong>npm install –save-dev grunt-electron-installer</strong> <a href="https://github.com/electron-archive/grunt-electron-installer" target="_blank" rel="noopener">安装grunt打包可安装的exe插件</a></p>
+<h4 id="在本地克隆electron官方demo项目"><a href="#在本地克隆electron官方demo项目" class="headerlink" title="在本地克隆electron官方demo项目"></a>在本地克隆electron官方demo项目</h4><p>git clone <a href="https://github.com/electron/electron-quick-start" target="_blank" rel="noopener">https://github.com/electron/electron-quick-start</a></p>
+<h4 id="在Vue项目里面引入electron主程序main-js"><a href="#在Vue项目里面引入electron主程序main-js" class="headerlink" title="在Vue项目里面引入electron主程序main.js"></a>在Vue项目里面引入electron主程序main.js</h4><p>把electron-quick-start项目中的main.js搬到vue的build文件中，并改个名字electron.js。</p>
+<p>将electron.js里面的文件路径修改成符合本项目的路径</p>
+<pre><code>mainWindow.loadURL(url.format({
+    pathname: path.join(__dirname, &apos;../dist/index.html&apos;),
+    protocol: &apos;file:&apos;,
+    slashes: true
+}))
+</code></pre><h4 id="在package-json中添加入口"><a href="#在package-json中添加入口" class="headerlink" title="在package.json中添加入口"></a>在package.json中添加入口</h4><pre><code>&quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;webpack-dev-server --inline --progress --config build/webpack.dev.conf.js&quot;,
+    &quot;start&quot;: &quot;npm run dev&quot;,
+    &quot;build&quot;: &quot;node build/build.js&quot;,
+    &quot;electron_dev&quot;: &quot;electron build/electron.js&quot;,  //本地调试用
+    //打包成不用安装的exe文件
+    &quot;electron_build&quot;: &quot;electron-packager ./dist/ beanSprout --win --out beanSprout --platform=win32 --arch=x64 --icon=./src/assets/favicon.ico --version 1.3.4.0  --ignore=node_modules --overwrite&quot;, 
+    &quot;ele_setup_build&quot;: &quot;grunt&quot; //打包成可安装的安装包
+},
+</code></pre><h2 id="dev-调试环境"><a href="#dev-调试环境" class="headerlink" title="dev 调试环境"></a>dev 调试环境</h2><p>先运行<strong>npm run build</strong>将vue项目打包成静态资源文件，再运行<strong>electron_dev</strong>即可看到调试环境下的桌面应用</p>
+<h2 id="打包不用安装的exe文件-electron-packager"><a href="#打包不用安装的exe文件-electron-packager" class="headerlink" title="打包不用安装的exe文件(electron-packager)"></a>打包不用安装的exe文件(electron-packager)</h2><p>运行<strong>npm run electron_build</strong>即可打包成不用安装的exe文件</p>
+<p>“electron-packager ./dist/ beanSprout –win –out beanSprout –platform=win32 –arch=x64 –icon=./src/assets/favicon.ico –version 1.3.4.0  –ignore=node_modules –overwrite”</p>
+<p>1、 ‘./dist’ 表示打包的源文件，即dist目录下面打包好的资源文件(需要在这个目录下面添加electron运行的入口)</p>
+<pre><code>dist
+├── static
+├── index.html
+├── main.js
+└── package.json
+</code></pre><p>这里的main.js就是build目录下面的electron.js，不过这里的路径要修改一下</p>
+<pre><code>mainWindow.loadURL(url.format({
+    pathname: path.join(__dirname, &apos;index.html&apos;),  //这里的路径要修改
+    protocol: &apos;file:&apos;,
+    slashes: true
+}))
+</code></pre><p>2、’beanSprout’ 打包exe的名字</p>
+<p>3、 ‘–win –out beanSprout’ 输出的文件夹名字</p>
+<p>4、’–platform=win32’ 平台</p>
+<p>5、 ‘–icon=./src/assets/favicon.ico’ 打包以后的icon，即exe图标</p>
+<p>打包成功以后的目录如下</p>
+<pre><code>beanSprout
+    └── beanSprout-win32-x64
+                ├── ...
+                └── beanSprout.exe  //双击即可运行
+</code></pre><p>本例参看 <a href="http://blog.csdn.net/j_bleach/article/details/78513282" target="_blank" rel="noopener">j_bleach博客-electron 将pc端（vue）页面打包为桌面端应用</a></p>
+<h2 id="打包需要安装的exe文件目录-grunt-electron-installer"><a href="#打包需要安装的exe文件目录-grunt-electron-installer" class="headerlink" title="打包需要安装的exe文件目录(grunt-electron-installer)"></a>打包需要安装的exe文件目录(grunt-electron-installer)</h2><p>首先在根目录下面新建<strong>Gruntfile.js</strong></p>
+<pre><code>var grunt = require(&apos;grunt&apos;);
+
+//进行配置
+grunt.config.init({
+pkg:grunt.file.readJSON(&apos;package.json&apos;),
+&apos;create-windows-installer&apos;: {
+    x64: {
+        appDirectory: &apos;./beanSprout/beanSprout-win32-x64&apos;, //已经打包的electron App目录
+        outputDirectory: &apos;./beanSprout/beanSproutSetup&apos;,    //输出的资源目录
+        authors: &apos;movi&apos;,    //发布者
+        exe: &apos;beanSprout.exe&apos;,  //这里的名字要和之前打包成不需安装exe文件的名字保持一致
+        description:&quot; A desk application based on vue and elecron&quot;,
+        loadingGif:&quot;./src/assets/install.gif&quot;,  //安装动画
+        setupIcon:&quot;./src/assets/favicon.ico&quot; //生成桌面快捷方式的图标
+    }
+}
+})
+
+//加载任务
+grunt.loadNpmTasks(&apos;grunt-electron-installer&apos;)
+
+//设置默认任务
+grunt.registerTask(&apos;default&apos;,[&apos;create-windows-installer&apos;])
+
+grunt.tasks()
+</code></pre><p>运行<strong>npm run ele_setup_build</strong>即可打包成需要安装的exe文件目录</p>
+<p>打包成功以后的目录如下</p>
+<pre><code>beanSprout
+    └── beanSproutSetup
+            ├── ...
+            └── Setup.exe  //双击开始安装
+</code></pre><p>可参看 <a href="http://blog.csdn.net/w342916053/article/details/51701722" target="_blank" rel="noopener">Long-Island的博客-使用Grunt 插件打包Electron Windows应用</a></p>
+<h2 id="自动生成快捷方式"><a href="#自动生成快捷方式" class="headerlink" title="自动生成快捷方式"></a>自动生成快捷方式</h2><p>需要在./dist/main.js加上如下代码</p>
+<pre><code>var handleStartupEvent = function() {
+if (process.platform !== &apos;win32&apos;) {
+    return false;
+}
+
+var squirrelCommand = process.argv[1];
+switch (squirrelCommand) {
+    case &apos;--squirrel-install&apos;:
+    case &apos;--squirrel-updated&apos;:
+    install();
+    return true;
+    case &apos;--squirrel-uninstall&apos;:
+    uninstall();
+    app.quit();
+    return true;
+    case &apos;--squirrel-obsolete&apos;:
+    app.quit();
+    return true;
+}
+
+// 安装
+function install() {
+    var cp = require(&apos;child_process&apos;);
+    var updateDotExe = path.resolve(path.dirname(process.execPath), &apos;..&apos;, &apos;update.exe&apos;);
+    var target = path.basename(process.execPath);
+    var child = cp.spawn(updateDotExe, [&quot;--createShortcut&quot;, target], { detached: true });
+    child.on(&apos;close&apos;, function(code) {
+        app.quit();
+    });
+}
+
+
+// 卸载
+function uninstall() {
+    var cp = require(&apos;child_process&apos;);
+    var updateDotExe = path.resolve(path.dirname(process.execPath), &apos;..&apos;, &apos;update.exe&apos;);
+    var target = path.basename(process.execPath);
+    var child = cp.spawn(updateDotExe, [&quot;--removeShortcut&quot;, target], { detached: true });
+    child.on(&apos;close&apos;, function(code) {
+        app.quit();
+    });
+}
+
+};
+
+if (handleStartupEvent()) {
+return;
+}
+</code></pre><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>当在dist目录下面生成electron app时，在packjson里面定义版本号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;name&quot;: &quot;beanSprout&quot;,</span><br><span class="line">&quot;version&quot;: &quot;1.0.1&quot;   //亲测1.0.0和1.0.1有用</span><br></pre></td></tr></table></figure></p>
+<p>这里的版本不能随便写，不然在用<strong>grunt-electron-installer</strong>打包成安装应用时会提示版本号不对，不符合规范等，导致打包失败</p>
+<h2 id="新版功能用到的知识"><a href="#新版功能用到的知识" class="headerlink" title="新版功能用到的知识"></a>新版功能用到的知识</h2><p>1、引入electron shell模块运行bat脚本</p>
+<pre><code>const {shell} = require(&apos;electron&apos;);
+shell.openItem(path); //path 本地bat文件的路径
+</code></pre><p>增加*.bat脚本 可以执行相关js操作 类似于cmd窗口，在bat脚本前面加入以下代码可以隐藏cmd运行窗口</p>
+<pre><code>@echo off
+if &quot;%1&quot; == &quot;h&quot; goto begin
+mshta vbscript:createobject(&quot;wscript.shell&quot;).run(&quot;&quot;&quot;%~nx0&quot;&quot; h&quot;,0)(window.close)&amp;&amp;exit
+:begin
+</code></pre><p>2、将根目录下面的package.json文件中的入口修改如下,删除build下面的electron.js</p>
+<pre><code>&quot;scripts&quot;: {
+    ...
+    &quot;electron_dev&quot;: &quot;electron dist/main.js &quot;,
+    ...
+},
+</code></pre><p>3、新增add-new.html用于上传图片储存本地，用到的相关模块如下</p>
+<pre><code>node.js的fs模块的fs.open()、fs.write()、fs.writeFile()写文件和修改文件
+</code></pre><p>4、页面之间的通讯</p>
+<pre><code>//add-new.html文件里面js
+const ipc = require(&apos;electron&apos;).ipcMain;    
+ipc.send(&apos;build&apos;) //build的指令。send到主进程index.js中。
+
+//main.js主程序接收事件
+const ipc = require(&apos;electron&apos;).ipcMain;
+ipc.on(&apos;build&apos;,function() {
+    shell.openItem(path_run_dev);
+})
+</code></pre><h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p>最初的想法是想在electron外壳上加菜单栏，属于系统菜单，因此新建菜单。但是实际过程中因为路径的问题操作起来比较费劲，在你打包成exe文件的时候，只是把vue打包生成的静态资源文件夹dist打包了过去，如果你只是单纯的手动在dist里面添加页面，那么在打包的时候一定会报错。后来发现应该在vue里面写add-new模块的功能，在页面实现菜单相关功能会更容易实现些。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2018/02/01/https-theory/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MoviLee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/movi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Movi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/01/https-theory/" itemprop="url">https-theory</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T14:56:09+08:00">
+                2018-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/02/01/https-theory/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://ncumovi.com/2018/02/01/https-theory/" class="cy_cmt_count" data-xid="2018/02/01/https-theory/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                   分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="\assets\js\APlayer.min.js"> </script><p><img src="/img/https-theory/xmind.png" alt="https原理思维导图"></p>
+<h4 id="https相关原理"><a href="#https相关原理" class="headerlink" title="https相关原理"></a><a href="http://blog.csdn.net/luocn99/article/details/39777707" target="_blank" rel="noopener">https相关原理</a></h4><h4 id="三次握手信号的原理"><a href="#三次握手信号的原理" class="headerlink" title="三次握手信号的原理"></a><a href="http://blog.csdn.net/cyfcsd/article/details/52049664" target="_blank" rel="noopener">三次握手信号的原理</a></h4><h4 id="HTTP的基本原理"><a href="#HTTP的基本原理" class="headerlink" title="HTTP的基本原理"></a><a href="http://blog.csdn.net/jiary5201314/article/details/51248145" target="_blank" rel="noopener">HTTP的基本原理</a></h4>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2018/01/25/weibo-show/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MoviLee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/movi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Movi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/25/weibo-show/" itemprop="url">Hexo-next-weibo秀</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-25T14:20:19+08:00">
+                2018-01-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/01/25/weibo-show/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://ncumovi.com/2018/01/25/weibo-show/" class="cy_cmt_count" data-xid="2018/01/25/weibo-show/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                   分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="\assets\js\APlayer.min.js"> </script><h2 id="微博秀代码的获取"><a href="#微博秀代码的获取" class="headerlink" title="微博秀代码的获取"></a>微博秀代码的获取</h2><p>我们要登录<a href="http://app.weibo.com/tool/weiboshow" target="_blank" rel="noopener">新浪微博开放平台</a>来获取微博秀的代码</p>
+<h2 id="新建微博组件"><a href="#新建微博组件" class="headerlink" title="新建微博组件"></a>新建微博组件</h2><p>在<strong>themes/next/layout/_marco</strong>目录下面新建<strong>weibo.swig</strong>这个组件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;% <span class="keyword">if</span> <span class="literal">true</span> %&#125;</span><br><span class="line">  &lt;div class=<span class="string">"widget-wrap"</span>&gt;</span><br><span class="line">    &lt;h3 class=<span class="string">"widget-title"</span>&gt;Weibo Show&lt;/h3&gt;</span><br><span class="line">    &lt;div class=<span class="string">"widget-weibo"</span>&gt;</span><br><span class="line">      &lt;iframe width=<span class="string">"100%"</span> height=<span class="string">"550"</span> class=<span class="string">"share_self"</span>  frameborder=<span class="string">"0"</span> scrolling=<span class="string">"no"</span> src=<span class="string">"//widget.weibo.com/weiboshow/index.php?language=&amp;width=0&amp;height=550&amp;fansRow=2&amp;ptype=1&amp;speed=0&amp;skin=5&amp;isTitle=1&amp;noborder=1&amp;isWeibo=1&amp;isFans=1&amp;uid=5143642701&amp;verifier=c044f752&amp;dpc=1"</span>&gt;&lt;/iframe&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<p>将微博秀的样式放在<strong>themes/next/source/css/_common/components/sidebar</strong>目录下面的<strong>sidebar.styl</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">.widget-title&#123;</span><br><span class="line">  font-size: 14px;</span><br><span class="line">  font-weight: 600;</span><br><span class="line">  text-align:center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.widget-weibo&#123;</span><br><span class="line">  text-shadow: 0 1px <span class="comment">#fff</span></span><br><span class="line">  border-radius: 3px</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="微博秀组件的引用"><a href="#微博秀组件的引用" class="headerlink" title="微博秀组件的引用"></a>微博秀组件的引用</h2><p>在<strong>themes/next/layout/_marco</strong>目录下面的<strong>sidebar.swig</strong>组件里面引入</p>
+<p>具体的位置视情况而定，我是放在友情链接下面的</p>
+<pre><code>{% if theme.links %}
+
+ ...
+
+{% endif %}
+
+{% include './weibo.swig' %}
+</code></pre><h2 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h2><p>1、本地预览的时候要将<strong>localhost:4000</strong>替换成<strong>127.0.0.1</strong>，否则看不到</p>
+<p>2、直接在微博里面复制的微博秀代码包含<strong><a href="http://widget.weibo.com" target="_blank" rel="noopener">http://widget.weibo.com</a></strong>…,一定记得将<strong>http</strong>去掉，否则会谷歌的<strong>https</strong>认为是不安全链接，被浏览器拦截。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/movi.jpg"
+                alt="MoviLee" />
+            
+              <p class="site-author-name" itemprop="name">MoviLee</p>
+              <p class="site-description motion-element" itemprop="description">心无所恃 随遇而安</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ncumovi" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/5143642701/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/li-mao-wei-62-95/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-hand-lizard-o"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:ncumovi@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+
+
+          <div class='my-music-style'>
+             <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=252563&auto=1&height=66"></iframe>
+          </div>
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://evanstang.cn/" title="Evans (另一个屌丝前端)" target="_blank">Evans (另一个屌丝前端)</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/408824338/work" title="Cmk (技术架构工程师)" target="_blank">Cmk (技术架构工程师)</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+        
+  <div class="weibo-wrap">
+    <div class="widget-weibo">
+<iframe width="300" height="800" class="share_self"  frameborder="0" scrolling="no" src="//widget.weibo.com/weiboshow/index.php?language=&width=0&height=800&fansRow=2&ptype=1&speed=0&skin=5&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=5143642701&verifier=c044f752&dpc=1"></iframe>    </div>
+  </div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MoviLee</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=1.9.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytq2iYjj"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
