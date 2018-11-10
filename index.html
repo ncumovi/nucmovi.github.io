@@ -408,13 +408,13 @@
         
           
             <script src="\assets\js\APlayer.min.js"> </script><h2 id="ideal启动tomcat环境前置条件"><a href="#ideal启动tomcat环境前置条件" class="headerlink" title="ideal启动tomcat环境前置条件"></a>ideal启动tomcat环境前置条件</h2><p>前置条件就是你安装了IDEA编辑器、JDK以及Tomcat。同时本地要有一个java项目，否则拿什么去启动，当然你也可以本地新建一个，不过不在本次讲解范畴之内。。。</p>
-<h2 id="1、配置项目"><a href="#1、配置项目" class="headerlink" title="1、配置项目"></a>1、配置项目</h2><h4 id="1-1、打开project-structure进行配置"><a href="#1-1、打开project-structure进行配置" class="headerlink" title="1-1、打开project structure进行配置"></a>1-1、打开project structure进行配置</h4><p><img src="/img/ideal-tomcat/open_project_structure.png" alt="打开项目结构进行设置"></p>
-<h4 id="1-2、project的配置"><a href="#1-2、project的配置" class="headerlink" title="1-2、project的配置"></a>1-2、project的配置</h4><p>1、项目名称随便写，一般会默认当前项目名称</p>
+<h2 id="配置项目"><a href="#配置项目" class="headerlink" title="配置项目"></a>配置项目</h2><h4 id="打开project-structure进行配置"><a href="#打开project-structure进行配置" class="headerlink" title="打开project structure进行配置"></a>打开project structure进行配置</h4><p><img src="/img/ideal-tomcat/open_project_structure.png" alt="打开项目结构进行设置"></p>
+<h4 id="project的配置"><a href="#project的配置" class="headerlink" title="project的配置"></a>project的配置</h4><p>1、项目名称随便写，一般会默认当前项目名称</p>
 <p>2、选择安装好的jdk</p>
 <p>3、选择项目语言级别，这里选8，否则编译会报错，有兴趣的童鞋可以尝试一下</p>
 <p>4、选择项目编译输出，项目在编译的时候会有一个输出项目，我们这里直接选择当前项目目录下的<strong>out</strong>文件夹，没有的话可以直接编辑成<strong>/当前项目/out</strong>,这里的out文件夹在后面编译的时候回生成。</p>
 <p><img src="/img/ideal-tomcat/project.png" alt="project配置"></p>
-<h4 id="1-3、module的配置"><a href="#1-3、module的配置" class="headerlink" title="1-3、module的配置"></a>1-3、module的配置</h4><p><img src="/img/ideal-tomcat/module.png" alt="module"></p>
+<h4 id="module的配置"><a href="#module的配置" class="headerlink" title="module的配置"></a>module的配置</h4><p><img src="/img/ideal-tomcat/module.png" alt="module"></p>
 <p>1、点开module，这里ideal已经自动帮我们加载好了我们的项目</p>
 <p>2、点击source目录，然后选择我们要运行的java目录，也就时项目目录下<strong>src\main\java</strong>,将其作为编译的资源文件</p>
 <p><img src="/img/ideal-tomcat/moudle_source.png" alt="配置module的source"></p>
@@ -422,16 +422,16 @@
 <p><img src="/img/ideal-tomcat/module_path.png" alt="配置module的path"></p>
 <p>module里面的dependencies里面不用选择，ideal会帮我们自动填好，直接ok行</p>
 <p><img src="/img/ideal-tomcat/module_dependenciespng.png" alt="配置module的dependencies"></p>
-<h4 id="1-4、libraries的配置"><a href="#1-4、libraries的配置" class="headerlink" title="1-4、libraries的配置"></a>1-4、libraries的配置</h4><p>新增java,选择当前项目运行所依赖的jar包</p>
+<h4 id="libraries的配置"><a href="#libraries的配置" class="headerlink" title="libraries的配置"></a>libraries的配置</h4><p>新增java,选择当前项目运行所依赖的jar包</p>
 <p><img src="/img/ideal-tomcat/libraries.png" alt="新增依赖"><br><img src="/img/ideal-tomcat/library_dep.png" alt="新增依赖"><br><img src="/img/ideal-tomcat/choose_module.png" alt="选择当前module"></p>
-<h4 id="1-5、Facets的配置"><a href="#1-5、Facets的配置" class="headerlink" title="1-5、Facets的配置"></a>1-5、Facets的配置</h4><p>点击<strong>+</strong>新增web</p>
+<h4 id="Facets的配置"><a href="#Facets的配置" class="headerlink" title="Facets的配置"></a>Facets的配置</h4><p>点击<strong>+</strong>新增web</p>
 <p><img src="/img/ideal-tomcat/facets_web.png" alt="新增web"></p>
 <p><img src="/img/ideal-tomcat/facet_web1.png" alt="选择当前项目模块"></p>
-<h4 id="1-6、Artifacts的配置"><a href="#1-6、Artifacts的配置" class="headerlink" title="1-6、Artifacts的配置"></a>1-6、Artifacts的配置</h4><p>点击<strong>+</strong>新增,选择Web Application:Exploded,然后选择from modules</p>
+<h4 id="Artifacts的配置"><a href="#Artifacts的配置" class="headerlink" title="Artifacts的配置"></a>Artifacts的配置</h4><p>点击<strong>+</strong>新增,选择Web Application:Exploded,然后选择from modules</p>
 <p><img src="/img/ideal-tomcat/artifacts_add.png" alt="新增artifacts"></p>
 <p>选择当前项目</p>
 <p><img src="/img/ideal-tomcat/art_modules.png" alt="选择模块"></p>
-<h2 id="2、配置tomcat"><a href="#2、配置tomcat" class="headerlink" title="2、配置tomcat"></a>2、配置tomcat</h2><p>点击file，打开设置选项，搜索<strong>Application Server</strong>,然后选则server，添加<strong>tomcat server</strong>，选择tomcat的安装路径</p>
+<h2 id="配置tomcat"><a href="#配置tomcat" class="headerlink" title="配置tomcat"></a>配置tomcat</h2><p>点击file，打开设置选项，搜索<strong>Application Server</strong>,然后选则server，添加<strong>tomcat server</strong>，选择tomcat的安装路径</p>
 <p><img src="/img/ideal-tomcat/tomcat_config1.png" alt="添加tomcat server"></p>
 <p><img src="/img/ideal-tomcat/tomcat_path.png" alt="选择tomcat路径"></p>
 <p>点击add configurations，配置tomcat</p>
@@ -440,7 +440,7 @@
 <p><img src="/img/ideal-tomcat/tomcat_add1.png" alt="新增本地tomcat"></p>
 <p>输入tomcat的名称</p>
 <p><img src="/img/ideal-tomcat/tomat_last.png" alt="输入tomat的名称"></p>
-<h2 id="3、配置完成-大功告成。"><a href="#3、配置完成-大功告成。" class="headerlink" title="3、配置完成,大功告成。"></a>3、配置完成,大功告成。</h2><p><img src="/img/ideal-tomcat/tomcat_run.png" alt="点击run开启tomcat"></p>
+<h2 id="配置完成-大功告成。"><a href="#配置完成-大功告成。" class="headerlink" title="配置完成,大功告成。"></a>配置完成,大功告成。</h2><p><img src="/img/ideal-tomcat/tomcat_run.png" alt="点击run开启tomcat"></p>
 
           
         
@@ -626,14 +626,14 @@
           
             <script src="\assets\js\APlayer.min.js"> </script><h2 id="Foxit-PDF-Editor简介"><a href="#Foxit-PDF-Editor简介" class="headerlink" title="Foxit PDF Editor简介"></a>Foxit PDF Editor简介</h2><p>foxit pdf editor破解版是一款真正意义上的PDF文档编辑软件。foxit pdf editor破解版不像其他编辑软件只能够简单的编辑PDF的注释以及对一些界面有限的修改，而是对PDF文档的内容进行各种修改，比如：图片，文字，排版等等。foxit pdf editor破解版不但能够修改内容，还能够编辑页面，如：导入、导出、插入、删除等等。完成对文档的编辑后，你还能够对有结果的PDF文档进行保存，打印，另存等操作。foxit pdf editor破解版是你在使用PDF文档不错的选择。</p>
 <h2 id="Foxit-PDF-Editor的下载及安装"><a href="#Foxit-PDF-Editor的下载及安装" class="headerlink" title="Foxit PDF Editor的下载及安装"></a><a href="http://www.3322.cc/soft/4738.html" target="_blank" rel="noopener">Foxit PDF Editor的下载及安装</a></h2><p>将下载好的包解压，双击FoxitPDFEditor.exe文件进行安装，可以自定义安装，也可以一键安装</p>
-<h2 id="2、Foxit-PDF-Editor的使用"><a href="#2、Foxit-PDF-Editor的使用" class="headerlink" title="2、Foxit PDF Editor的使用"></a>2、Foxit PDF Editor的使用</h2><h4 id="2-1、选择文件，打开你要编辑的pdf文档"><a href="#2-1、选择文件，打开你要编辑的pdf文档" class="headerlink" title="2-1、选择文件，打开你要编辑的pdf文档"></a>2-1、选择文件，打开你要编辑的pdf文档</h4><p><img src="/img/pdf-editor/open.png" alt="open"></p>
-<h4 id="2-2、选择你要编辑的文字对象"><a href="#2-2、选择你要编辑的文字对象" class="headerlink" title="2-2、选择你要编辑的文字对象"></a>2-2、选择你要编辑的文字对象</h4><p><img src="/img/pdf-editor/delete.png" alt="delete"></p>
-<h4 id="2-3、添加新的文本，点击导入windows字体，选择宋体"><a href="#2-3、添加新的文本，点击导入windows字体，选择宋体" class="headerlink" title="2-3、添加新的文本，点击导入windows字体，选择宋体"></a>2-3、添加新的文本，点击导入windows字体，选择宋体</h4><p><img src="/img/pdf-editor/add1.png" alt="add"></p>
-<h4 id="2-4、选择宋体"><a href="#2-4、选择宋体" class="headerlink" title="2-4、选择宋体"></a>2-4、选择宋体</h4><p><img src="/img/pdf-editor/add2.png" alt="add2"></p>
-<h4 id="2-5、输入你想要输入的文本，然后确定"><a href="#2-5、输入你想要输入的文本，然后确定" class="headerlink" title="2-5、输入你想要输入的文本，然后确定"></a>2-5、输入你想要输入的文本，然后确定</h4><p><img src="/img/pdf-editor/add_txt.png" alt="add_txt"></p>
-<h4 id="2-6、鼠标左键选择刚刚插入的文本，按住不放，同时移动鼠标拖拽到想要放置的位置"><a href="#2-6、鼠标左键选择刚刚插入的文本，按住不放，同时移动鼠标拖拽到想要放置的位置" class="headerlink" title="2-6、鼠标左键选择刚刚插入的文本，按住不放，同时移动鼠标拖拽到想要放置的位置"></a>2-6、鼠标左键选择刚刚插入的文本，按住不放，同时移动鼠标拖拽到想要放置的位置</h4><p><img src="/img/pdf-editor/drag.png" alt="drag"></p>
-<h4 id="2-7、右边的属性可以改变字体大小等"><a href="#2-7、右边的属性可以改变字体大小等" class="headerlink" title="2-7、右边的属性可以改变字体大小等"></a>2-7、右边的属性可以改变字体大小等</h4><p><img src="/img/pdf-editor/font.png" alt="font"></p>
-<h4 id="2-8、最后点击左上角的保存按钮就可以大功告成了"><a href="#2-8、最后点击左上角的保存按钮就可以大功告成了" class="headerlink" title="2-8、最后点击左上角的保存按钮就可以大功告成了"></a>2-8、最后点击左上角的保存按钮就可以大功告成了</h4><p><img src="/img/pdf-editor/save.png" alt="save"></p>
+<h2 id="Foxit-PDF-Editor的使用"><a href="#Foxit-PDF-Editor的使用" class="headerlink" title="Foxit PDF Editor的使用"></a>Foxit PDF Editor的使用</h2><h4 id="选择文件，打开你要编辑的pdf文档"><a href="#选择文件，打开你要编辑的pdf文档" class="headerlink" title="选择文件，打开你要编辑的pdf文档"></a>选择文件，打开你要编辑的pdf文档</h4><p><img src="/img/pdf-editor/open.png" alt="open"></p>
+<h4 id="选择你要编辑的文字对象"><a href="#选择你要编辑的文字对象" class="headerlink" title="选择你要编辑的文字对象"></a>选择你要编辑的文字对象</h4><p><img src="/img/pdf-editor/delete.png" alt="delete"></p>
+<h4 id="添加新的文本，点击导入windows字体，选择宋体"><a href="#添加新的文本，点击导入windows字体，选择宋体" class="headerlink" title="添加新的文本，点击导入windows字体，选择宋体"></a>添加新的文本，点击导入windows字体，选择宋体</h4><p><img src="/img/pdf-editor/add1.png" alt="add"></p>
+<h4 id="选择宋体"><a href="#选择宋体" class="headerlink" title="选择宋体"></a>选择宋体</h4><p><img src="/img/pdf-editor/add2.png" alt="add2"></p>
+<h4 id="输入你想要输入的文本，然后确定"><a href="#输入你想要输入的文本，然后确定" class="headerlink" title="输入你想要输入的文本，然后确定"></a>输入你想要输入的文本，然后确定</h4><p><img src="/img/pdf-editor/add_txt.png" alt="add_txt"></p>
+<h4 id="鼠标左键选择刚刚插入的文本，按住不放，同时移动鼠标拖拽到想要放置的位置"><a href="#鼠标左键选择刚刚插入的文本，按住不放，同时移动鼠标拖拽到想要放置的位置" class="headerlink" title="鼠标左键选择刚刚插入的文本，按住不放，同时移动鼠标拖拽到想要放置的位置"></a>鼠标左键选择刚刚插入的文本，按住不放，同时移动鼠标拖拽到想要放置的位置</h4><p><img src="/img/pdf-editor/drag.png" alt="drag"></p>
+<h4 id="右边的属性可以改变字体大小等"><a href="#右边的属性可以改变字体大小等" class="headerlink" title="右边的属性可以改变字体大小等"></a>右边的属性可以改变字体大小等</h4><p><img src="/img/pdf-editor/font.png" alt="font"></p>
+<h4 id="最后点击左上角的保存按钮就可以大功告成了"><a href="#最后点击左上角的保存按钮就可以大功告成了" class="headerlink" title="最后点击左上角的保存按钮就可以大功告成了"></a>最后点击左上角的保存按钮就可以大功告成了</h4><p><img src="/img/pdf-editor/save.png" alt="save"></p>
 
           
         
@@ -817,16 +817,16 @@
       
         
           
-            <script src="\assets\js\APlayer.min.js"> </script><h2 id="Navicat的下载及安装"><a href="#Navicat的下载及安装" class="headerlink" title="Navicat的下载及安装"></a>Navicat的下载及安装</h2><h4 id="1、Navicat下载"><a href="#1、Navicat下载" class="headerlink" title="1、Navicat下载"></a>1、<a href="http://www.formysql.com/" target="_blank" rel="noopener">Navicat下载</a></h4><p>当然也可以下载破解版的，百搭一下，大把资源。</p>
-<h4 id="2、Navicat的安装"><a href="#2、Navicat的安装" class="headerlink" title="2、Navicat的安装"></a>2、Navicat的安装</h4><p><a href="https://blog.csdn.net/pdcfighting/article/details/81669537" target="_blank" rel="noopener">一路傻瓜式的安装即可</a></p>
-<h2 id="2、Navicat创建sql-server连接"><a href="#2、Navicat创建sql-server连接" class="headerlink" title="2、Navicat创建sql server连接"></a>2、<a href="https://jingyan.baidu.com/article/48b558e32f2bb67f38c09a01.html" target="_blank" rel="noopener">Navicat创建sql server连接</a></h2><p>   <img src="/img/sql-server/create_connection.png" alt="创建连接"></p>
+            <script src="\assets\js\APlayer.min.js"> </script><h2 id="Navicat的下载及安装"><a href="#Navicat的下载及安装" class="headerlink" title="Navicat的下载及安装"></a>Navicat的下载及安装</h2><h4 id="Navicat下载"><a href="#Navicat下载" class="headerlink" title="Navicat下载"></a><a href="http://www.formysql.com/" target="_blank" rel="noopener">Navicat下载</a></h4><p>当然也可以下载破解版的，百搭一下，大把资源。</p>
+<h4 id="Navicat的安装"><a href="#Navicat的安装" class="headerlink" title="Navicat的安装"></a>Navicat的安装</h4><p><a href="https://blog.csdn.net/pdcfighting/article/details/81669537" target="_blank" rel="noopener">一路傻瓜式的安装即可</a></p>
+<h2 id="Navicat创建sql-server连接"><a href="#Navicat创建sql-server连接" class="headerlink" title="Navicat创建sql server连接"></a><a href="https://jingyan.baidu.com/article/48b558e32f2bb67f38c09a01.html" target="_blank" rel="noopener">Navicat创建sql server连接</a></h2><p>   <img src="/img/sql-server/create_connection.png" alt="创建连接"></p>
 <p>   注：主机名或ip地址和端口之间用’,’隔开。如：127.0.0.1,5050</p>
-<h2 id="3、Navicat连接sql-server遇到的问题"><a href="#3、Navicat连接sql-server遇到的问题" class="headerlink" title="3、Navicat连接sql server遇到的问题"></a>3、Navicat连接sql server遇到的问题</h2><h4 id="3-1、提示安装sql-server-native-client"><a href="#3-1、提示安装sql-server-native-client" class="headerlink" title="3-1、提示安装sql server native client"></a>3-1、提示安装sql server native client</h4><pre><code>navicat自带sqlncli_x64.msi(64位的)，就在安装目录下，安装后问题解决！
-</code></pre><h4 id="3-2、安装sqlncli-x64-msi提示-0x80070422错误"><a href="#3-2、安装sqlncli-x64-msi提示-0x80070422错误" class="headerlink" title="3-2、安装sqlncli_x64.msi提示..0x80070422错误"></a>3-2、<a href="http://www.win7zhijia.cn/jiaocheng/win7_10193.html" target="_blank" rel="noopener">安装sqlncli_x64.msi提示<strong>..0x80070422</strong>错误</a></h4><pre><code>这个安装失败是因为系统window update被禁用了，需要window + R 打开窗口运行service.msc,如下图所示：
+<h2 id="Navicat连接sql-server遇到的问题"><a href="#Navicat连接sql-server遇到的问题" class="headerlink" title="Navicat连接sql server遇到的问题"></a>Navicat连接sql server遇到的问题</h2><h4 id="提示安装sql-server-native-client"><a href="#提示安装sql-server-native-client" class="headerlink" title="提示安装sql server native client"></a>提示安装sql server native client</h4><pre><code>navicat自带sqlncli_x64.msi(64位的)，就在安装目录下，安装后问题解决！
+</code></pre><h4 id="安装sqlncli-x64-msi提示-0x80070422错误"><a href="#安装sqlncli-x64-msi提示-0x80070422错误" class="headerlink" title="安装sqlncli_x64.msi提示..0x80070422错误"></a><a href="http://www.win7zhijia.cn/jiaocheng/win7_10193.html" target="_blank" rel="noopener">安装sqlncli_x64.msi提示<strong>..0x80070422</strong>错误</a></h4><pre><code>这个安装失败是因为系统window update被禁用了，需要window + R 打开窗口运行service.msc,如下图所示：
 </code></pre><p><img src="/img/sql-server/service.png" alt="service"></p>
 <pre><code>找到Window Update服务，将禁用改为手动或者自动，然后确定并应用
 </code></pre><p><img src="/img/sql-server/windows_update.png" alt="windwo Update"></p>
-<h4 id="3-3、重新再navicat上面连接sql-server数据库即可"><a href="#3-3、重新再navicat上面连接sql-server数据库即可" class="headerlink" title="3-3、重新再navicat上面连接sql server数据库即可"></a>3-3、重新再navicat上面连接sql server数据库即可</h4>
+<h4 id="重新再navicat上面连接sql-server数据库即可"><a href="#重新再navicat上面连接sql-server数据库即可" class="headerlink" title="重新再navicat上面连接sql server数据库即可"></a>重新再navicat上面连接sql server数据库即可</h4>
           
         
       
@@ -1252,21 +1252,21 @@ TIME_ZONE = &apos;Asia/Shanghai&apos;
       
         
           
-            <script src="\assets\js\APlayer.min.js"> </script><h2 id="mysql的下载及安装"><a href="#mysql的下载及安装" class="headerlink" title="mysql的下载及安装"></a>mysql的下载及安装</h2><h4 id="1、mysql的下载"><a href="#1、mysql的下载" class="headerlink" title="1、mysql的下载"></a>1、mysql的下载</h4><p> <a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">mysql下载地址</a></p>
+            <script src="\assets\js\APlayer.min.js"> </script><h2 id="mysql的下载及安装"><a href="#mysql的下载及安装" class="headerlink" title="mysql的下载及安装"></a>mysql的下载及安装</h2><h4 id="mysql的下载"><a href="#mysql的下载" class="headerlink" title="mysql的下载"></a>mysql的下载</h4><p> <a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">mysql下载地址</a></p>
 <p> 选择对应的下载文件。（我电脑是64位，所以这下载的是64位的下载文件）</p>
-<h4 id="2、mysql的安装"><a href="#2、mysql的安装" class="headerlink" title="2、mysql的安装"></a>2、mysql的安装</h4><h4 id="2-1、msi格式的"><a href="#2-1、msi格式的" class="headerlink" title="2-1、msi格式的"></a>2-1、msi格式的</h4><p>直接点击安装，按照它给出的安装提示进行安装<br></p>
-<h4 id="2-2、zip格式的"><a href="#2-2、zip格式的" class="headerlink" title="2-2、zip格式的"></a>2-2、zip格式的</h4><p>zip格式是自己解压，解压缩之后其实MySQL就可以使用了。</p>
-<h2 id="2、mysql的启动"><a href="#2、mysql的启动" class="headerlink" title="2、mysql的启动"></a>2、mysql的启动</h2><pre><code>2-1、找到mysql的安装目录 **D:\tool\mysql-5.6.42-winx64\bin**
+<h4 id="mysql的安装"><a href="#mysql的安装" class="headerlink" title="mysql的安装"></a>mysql的安装</h4><h4 id="msi格式的"><a href="#msi格式的" class="headerlink" title="msi格式的"></a>msi格式的</h4><p>直接点击安装，按照它给出的安装提示进行安装<br></p>
+<h4 id="zip格式的"><a href="#zip格式的" class="headerlink" title="zip格式的"></a>zip格式的</h4><p>zip格式是自己解压，解压缩之后其实MySQL就可以使用了。</p>
+<h2 id="mysql的启动"><a href="#mysql的启动" class="headerlink" title="mysql的启动"></a>mysql的启动</h2><pre><code>2-1、找到mysql的安装目录 **D:\tool\mysql-5.6.42-winx64\bin**
 
 2-2、双击mysqld.exe启动mysql服务
 
 2-3、启动cmd命令提示窗，cd到bin目录下，输入mysql -u root -p，并回车，
 
 这个时候提示输入密码，一般初始密码为空，直接回车就进入mysql服务
-</code></pre><h2 id="3、用户和数据库的创建以及相关操作"><a href="#3、用户和数据库的创建以及相关操作" class="headerlink" title="3、用户和数据库的创建以及相关操作"></a>3、<a href="https://www.cnblogs.com/w-wfy/p/6487460.html" target="_blank" rel="noopener">用户和数据库的创建以及相关操作</a></h2><h4 id="3-1、数据库的创建"><a href="#3-1、数据库的创建" class="headerlink" title="3-1、数据库的创建"></a>3-1、数据库的创建</h4><pre><code>create database mydatabase;
-</code></pre><h4 id="3-2、创建用户"><a href="#3-2、创建用户" class="headerlink" title="3-2、创建用户"></a>3-2、创建用户</h4><pre><code>insert into mysql.user(Host,User,Password) values(&quot;localhost&quot;,&quot;test&quot;,password(&quot;1234&quot;));
+</code></pre><h2 id="用户和数据库的创建以及相关操作"><a href="#用户和数据库的创建以及相关操作" class="headerlink" title="用户和数据库的创建以及相关操作"></a><a href="https://www.cnblogs.com/w-wfy/p/6487460.html" target="_blank" rel="noopener">用户和数据库的创建以及相关操作</a></h2><h4 id="数据库的创建"><a href="#数据库的创建" class="headerlink" title="数据库的创建"></a>数据库的创建</h4><pre><code>create database mydatabase;
+</code></pre><h4 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h4><pre><code>insert into mysql.user(Host,User,Password) values(&quot;localhost&quot;,&quot;test&quot;,password(&quot;1234&quot;));
 </code></pre><p>注意：此处的”localhost”，是指该用户只能在本地登录，不能在另外一台机器上远程登录。如果想远程登录的话，将”localhost”改为”%”，表示在任何一台电脑上都可以登录。也可以指定某台机器可以远程登录</p>
-<h4 id="3-3、为用户授权"><a href="#3-3、为用户授权" class="headerlink" title="3-3、为用户授权"></a>3-3、为用户授权</h4><pre><code>授权格式：grant 权限 on 数据库.* to 用户名@登录主机 identified by &quot;密码&quot;;
+<h4 id="为用户授权"><a href="#为用户授权" class="headerlink" title="为用户授权"></a>为用户授权</h4><pre><code>授权格式：grant 权限 on 数据库.* to 用户名@登录主机 identified by &quot;密码&quot;;
 
 授权test用户拥有testDB数据库的所有权限（某个数据库的所有权限）
 grant all privileges on testDB.* to test@localhost identified by &apos;1234&apos;;
@@ -1277,12 +1277,12 @@ grant select,update on testDB.* to test@localhost identified by &apos;1234&apos;
 授权test用户拥有所有数据库的某些权限： 　
 grant select,delete,update,create,drop on *.* to test@&quot;%&quot; identified by &quot;1234&quot;;
 </code></pre><p>注：如果授权不成功，则先执行 <strong>flush privileges</strong>（刷新系统权限），然后再授权</p>
-<h4 id="4、用户登录"><a href="#4、用户登录" class="headerlink" title="4、用户登录"></a>4、用户登录</h4><pre><code>exit; //退出当前用户
+<h4 id="用户登录"><a href="#用户登录" class="headerlink" title="用户登录"></a>用户登录</h4><pre><code>exit; //退出当前用户
 
 mysql -u test -p;
 然后输入密码登录
 </code></pre><p>注：上一步的授权里不要用<strong>test@’%’</strong>，而是用<strong>test@localhost</strong>,否则会被拒绝登录，<a href="https://blog.csdn.net/silyvin/article/details/53351146" target="_blank" rel="noopener">这里有说明</a>。</p>
-<h4 id="5、第三方工具软件的接入"><a href="#5、第三方工具软件的接入" class="headerlink" title="5、第三方工具软件的接入"></a>5、<a href="https://jingyan.baidu.com/article/495ba841c1731b38b30ede84.html" target="_blank" rel="noopener">第三方工具软件的接入</a></h4><pre><code>创建mysql连接，输入刚刚创建的用户名和密码就可以成功连接到我们创建的数据库，
+<h4 id="第三方工具软件的接入"><a href="#第三方工具软件的接入" class="headerlink" title="第三方工具软件的接入"></a><a href="https://jingyan.baidu.com/article/495ba841c1731b38b30ede84.html" target="_blank" rel="noopener">第三方工具软件的接入</a></h4><pre><code>创建mysql连接，输入刚刚创建的用户名和密码就可以成功连接到我们创建的数据库，
 
 然后就可嘿嘿嘿的创建各种表了,从而进行各种操作了。
 </code></pre>
