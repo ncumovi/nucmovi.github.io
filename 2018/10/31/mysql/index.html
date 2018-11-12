@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="mysql,database," />
+  <meta name="keywords" content="database,mysql," />
 
 
 
@@ -80,14 +80,14 @@
 
 
 <meta name="description" content="mysql的下载及安装mysql的下载 mysql下载地址  选择对应的下载文件。（我电脑是64位，所以这下载的是64位的下载文件） mysql的安装msi格式的直接点击安装，按照它给出的安装提示进行安装 zip格式的zip格式是自己解压，解压缩之后其实MySQL就可以使用了。 mysql的启动2-1、找到mysql的安装目录 **D:\tool\mysql-5.6.42-winx64\bin*">
-<meta name="keywords" content="mysql,database">
+<meta name="keywords" content="database,mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql安装以及配置和启动">
 <meta property="og:url" content="http://ncumovi.com/2018/10/31/mysql/index.html">
 <meta property="og:site_name" content="Movi Blog">
 <meta property="og:description" content="mysql的下载及安装mysql的下载 mysql下载地址  选择对应的下载文件。（我电脑是64位，所以这下载的是64位的下载文件） mysql的安装msi格式的直接点击安装，按照它给出的安装提示进行安装 zip格式的zip格式是自己解压，解压缩之后其实MySQL就可以使用了。 mysql的启动2-1、找到mysql的安装目录 **D:\tool\mysql-5.6.42-winx64\bin*">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-10T12:38:44.235Z">
+<meta property="og:updated_time" content="2018-11-11T07:04:36.330Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql安装以及配置和启动">
 <meta name="twitter:description" content="mysql的下载及安装mysql的下载 mysql下载地址  选择对应的下载文件。（我电脑是64位，所以这下载的是64位的下载文件） mysql的安装msi格式的直接点击安装，按照它给出的安装提示进行安装 zip格式的zip格式是自己解压，解压缩之后其实MySQL就可以使用了。 mysql的启动2-1、找到mysql的安装目录 **D:\tool\mysql-5.6.42-winx64\bin*">
@@ -417,6 +417,10 @@
 这个时候提示输入密码，一般初始密码为空，直接回车就进入mysql服务
 </code></pre><h2 id="用户和数据库的创建以及相关操作"><a href="#用户和数据库的创建以及相关操作" class="headerlink" title="用户和数据库的创建以及相关操作"></a><a href="https://www.cnblogs.com/w-wfy/p/6487460.html" target="_blank" rel="noopener">用户和数据库的创建以及相关操作</a></h2><h4 id="数据库的创建"><a href="#数据库的创建" class="headerlink" title="数据库的创建"></a>数据库的创建</h4><pre><code>create database mydatabase;
 </code></pre><h4 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h4><pre><code>insert into mysql.user(Host,User,Password) values(&quot;localhost&quot;,&quot;test&quot;,password(&quot;1234&quot;));
+
+在mysql8.0版本里，用以下方式：
+
+create user &apos;username&apos;@&apos;localhost&apos; identified by &apos;pwd&apos;
 </code></pre><p>注意：此处的”localhost”，是指该用户只能在本地登录，不能在另外一台机器上远程登录。如果想远程登录的话，将”localhost”改为”%”，表示在任何一台电脑上都可以登录。也可以指定某台机器可以远程登录</p>
 <h4 id="为用户授权"><a href="#为用户授权" class="headerlink" title="为用户授权"></a>为用户授权</h4><pre><code>授权格式：grant 权限 on 数据库.* to 用户名@登录主机 identified by &quot;密码&quot;;
 
@@ -428,8 +432,15 @@ grant select,update on testDB.* to test@localhost identified by &apos;1234&apos;
 
 授权test用户拥有所有数据库的某些权限： 　
 grant select,delete,update,create,drop on *.* to test@&quot;%&quot; identified by &quot;1234&quot;;
-</code></pre><p>注：如果授权不成功，则先执行 <strong>flush privileges</strong>（刷新系统权限），然后再授权</p>
-<h4 id="用户登录"><a href="#用户登录" class="headerlink" title="用户登录"></a>用户登录</h4><pre><code>exit; //退出当前用户
+
+在mysql8.0版本里，用以下方式：
+grant all privileges on &apos;testDB&apos;.* to &apos;test&apos;@&apos;localhost&apos;
+</code></pre><p>注：如果授权不成功，则先执行 <strong>flush privileges</strong>（刷新系统权限），然后再授权,在8.0版本里需要更换加密方式，否则无法登陆数据库</p>
+<pre><code>alter user &apos;username&apos;@&apos;localhost&apos; identified with mysql_native_password by &apos;newpwd&apos;
+
+然后刷新下权限
+flush privileges
+</code></pre><h4 id="用户登录"><a href="#用户登录" class="headerlink" title="用户登录"></a>用户登录</h4><pre><code>exit; //退出当前用户
 
 mysql -u test -p;
 然后输入密码登录
@@ -483,9 +494,9 @@ mysql -u test -p;
       
         <div class="post-tags">
           
-            <a href="/tags/mysql/" rel="tag"># mysql</a>
-          
             <a href="/tags/database/" rel="tag"># database</a>
+          
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
           
         </div>
       
