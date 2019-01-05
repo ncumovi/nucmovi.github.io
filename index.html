@@ -272,6 +272,283 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2019/01/05/vue-component-js/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MoviLee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/movi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Movi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/05/vue-component-js/" itemprop="url">如何用js调用组件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-05T15:57:36+08:00">
+                2019-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/01/05/vue-component-js/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://ncumovi.com/2019/01/05/vue-component-js/" class="cy_cmt_count" data-xid="2019/01/05/vue-component-js/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                   分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="\assets\js\APlayer.min.js"> </script><h2 id="vue组件的正常使用"><a href="#vue组件的正常使用" class="headerlink" title="vue组件的正常使用"></a>vue组件的正常使用</h2><p>比如element-ui有个alert的组件，我们在使用的时候，需要先引入该组件，其次注册，并在template里面写相应的结构</p>
+<pre><code>...
+
+ &lt;el-alert
+    title=&quot;成功提示的文案&quot;
+    type=&quot;success&quot;&gt;
+ &lt;/el-alert&gt;
+
+...
+
+//引入组件
+import { alert } from &apos;element-ui&apos;
+
+...
+
+//注册组件
+component:{
+    ...
+    alert
+    ...
+}
+</code></pre><h4 id="当我们多个页面要用这个组件的时候，我们不想多册引入该组件，注册组件，并写结构，如何实现通过js调用该组件呢"><a href="#当我们多个页面要用这个组件的时候，我们不想多册引入该组件，注册组件，并写结构，如何实现通过js调用该组件呢" class="headerlink" title="当我们多个页面要用这个组件的时候，我们不想多册引入该组件，注册组件，并写结构，如何实现通过js调用该组件呢"></a>当我们多个页面要用这个组件的时候，我们不想多册引入该组件，注册组件，并写结构，如何实现通过js调用该组件呢</h4><p>其实element-UI 里面的 messageBox组件就是通过js调用的</p>
+<pre><code>this.$alert(&apos;这是一段内容&apos;, &apos;标题名称&apos;, {
+  confirmButtonText: &apos;确定&apos;,
+  callback: action =&gt; {
+    this.$message({
+      type: &apos;info&apos;,
+      message: `action: ${ action }`
+    });
+  }
+});
+</code></pre><p>如果是我们自己写了个messageBox组件或者其他组件，而且我也想只通过js调用，参考element-UI 源码，我写下了以下简陋的代码，实现此功能, Talk is cheap.Show you my code.</p>
+<pre><code>//index.js
+import Vue from &apos;vue&apos;; //引入vue
+import message from &apos;./src/message&apos;; //引入自己的组件
+let Message = Vue.extend(message);
+
+//核心就是拿到这个组件的实例，先new实例，然后拿到该组件的dom,并在body上append该dom节点
+function init(options){
+
+  let instance = new Message({
+    // data: options
+  });
+
+  instance.vm = instance.$mount();
+  document.body.appendChild(instance.vm.$el);
+
+  defaultOptions = {
+    hasMask:true,
+    typeMessage:&apos;alert&apos;,
+    ownClass:&apos;&apos;, 
+    showMsgBox:true,
+  }
+  if(_.isString(options)){
+    defaultOptions.messageText = options;
+  }
+  return instance
+}
+
+//以下就是把方法直接挂到vue原型上，方法里调用上面的init方法，然后再做something...
+Vue.prototype.alert = function(options){
+  let instance = init(options);
+  let ownDefaultOptions = {
+    confirmButtonText:&apos;确认&apos;,
+    confirmedAction:function(){console.log(&quot;可选的确认按钮点击事件&quot;)},
+  }
+  instance.messageOptions  = _.assign(defaultOptions,ownDefaultOptions,options);
+}
+
+Vue.prototype.confirm = function(options){
+  let instance = init(options);
+  let ownDefaultOptions = {
+    typeMessage:&apos;confirm&apos;,
+    confirmButtonText:&apos;确认&apos;,
+    cancelButtonText:&apos;取消&apos;, 
+    confirmedAction:function(){console.log(&quot;可选的确认按钮点击事件&quot;)},
+    canceledAction:function(){console.log(&quot;可选的取消按钮点击事件&quot;)}
+  }
+  instance.messageOptions  = _.assign(defaultOptions,ownDefaultOptions,options);
+}
+
+Vue.prototype.promote = function(options){
+  let instance = init(options);
+  let ownDefaultOptions = {
+    hasInput:true,
+    confirmButtonText:&apos;确认&apos;,
+    cancelButtonText:&apos;取消&apos;,
+    validType: &apos;email&apos;,
+    confirmedAction:function(){console.log(&quot;可选的确认按钮点击事件&quot;)},
+    canceledAction:function(){console.log(&quot;可选的取消按钮点击事件&quot;)}
+  }
+  instance.messageOptions  = _.assign(defaultOptions,ownDefaultOptions,options);
+}
+</code></pre><p>这样调用起来是不是方便很多呢，嘿嘿嘿。。。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2018/11/09/ideal-tomcat/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -442,6 +719,9 @@
 <p>输入tomcat的名称</p>
 <p><img src="/img/ideal-tomcat/tomat_last.png" alt="输入tomat的名称"></p>
 <h2 id="配置完成-大功告成。"><a href="#配置完成-大功告成。" class="headerlink" title="配置完成,大功告成。"></a>配置完成,大功告成。</h2><p><img src="/img/ideal-tomcat/tomcat_run.png" alt="点击run开启tomcat"></p>
+<h2 id="如何在配置好启动本地服务后，用本地后台代码打包成jar包"><a href="#如何在配置好启动本地服务后，用本地后台代码打包成jar包" class="headerlink" title="如何在配置好启动本地服务后，用本地后台代码打包成jar包"></a>如何在配置好启动本地服务后，用本地后台代码打包成jar包</h2><p><img src="/img/ideal-tomcat/buildJar1.png" alt="本地编译打包1"></p>
+<p><img src="/img/ideal-tomcat/buildJar2.png" alt="本地编译打包2"></p>
+<p>然后就会在target文件夹下面生成jar包</p>
 
           
         
@@ -2266,205 +2546,6 @@ ipc.on(&apos;build&apos;,function() {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2018/01/25/weibo-show/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="MoviLee">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/movi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Movi Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/25/weibo-show/" itemprop="url">Hexo-next-weibo秀</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-25T14:20:19+08:00">
-                2018-01-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/01/25/weibo-show/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://ncumovi.com/2018/01/25/weibo-show/" class="cy_cmt_count" data-xid="2018/01/25/weibo-show/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                   字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                   分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="\assets\js\APlayer.min.js"> </script><h2 id="微博秀代码的获取"><a href="#微博秀代码的获取" class="headerlink" title="微博秀代码的获取"></a>微博秀代码的获取</h2><p>我们要登录<a href="http://app.weibo.com/tool/weiboshow" target="_blank" rel="noopener">新浪微博开放平台</a>来获取微博秀的代码</p>
-<h2 id="新建微博组件"><a href="#新建微博组件" class="headerlink" title="新建微博组件"></a>新建微博组件</h2><p>在<strong>themes/next/layout/_marco</strong>目录下面新建<strong>weibo.swig</strong>这个组件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;% <span class="keyword">if</span> <span class="literal">true</span> %&#125;</span><br><span class="line">  &lt;div class=<span class="string">"widget-wrap"</span>&gt;</span><br><span class="line">    &lt;h3 class=<span class="string">"widget-title"</span>&gt;Weibo Show&lt;/h3&gt;</span><br><span class="line">    &lt;div class=<span class="string">"widget-weibo"</span>&gt;</span><br><span class="line">      &lt;iframe width=<span class="string">"100%"</span> height=<span class="string">"550"</span> class=<span class="string">"share_self"</span>  frameborder=<span class="string">"0"</span> scrolling=<span class="string">"no"</span> src=<span class="string">"//widget.weibo.com/weiboshow/index.php?language=&amp;width=0&amp;height=550&amp;fansRow=2&amp;ptype=1&amp;speed=0&amp;skin=5&amp;isTitle=1&amp;noborder=1&amp;isWeibo=1&amp;isFans=1&amp;uid=5143642701&amp;verifier=c044f752&amp;dpc=1"</span>&gt;&lt;/iframe&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-<p>将微博秀的样式放在<strong>themes/next/source/css/_common/components/sidebar</strong>目录下面的<strong>sidebar.styl</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">.widget-title&#123;</span><br><span class="line">  font-size: 14px;</span><br><span class="line">  font-weight: 600;</span><br><span class="line">  text-align:center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.widget-weibo&#123;</span><br><span class="line">  text-shadow: 0 1px <span class="comment">#fff</span></span><br><span class="line">  border-radius: 3px</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="微博秀组件的引用"><a href="#微博秀组件的引用" class="headerlink" title="微博秀组件的引用"></a>微博秀组件的引用</h2><p>在<strong>themes/next/layout/_marco</strong>目录下面的<strong>sidebar.swig</strong>组件里面引入</p>
-<p>具体的位置视情况而定，我是放在友情链接下面的</p>
-<pre><code>{% if theme.links %}
-
- ...
-
-{% endif %}
-
-{% include './weibo.swig' %}
-</code></pre><h2 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h2><p>1、本地预览的时候要将<strong>localhost:4000</strong>替换成<strong>127.0.0.1</strong>，否则看不到</p>
-<p>2、直接在微博里面复制的微博秀代码包含<strong><a href="http://widget.weibo.com" target="_blank" rel="noopener">http://widget.weibo.com</a></strong>…,一定记得将<strong>http</strong>去掉，否则会谷歌的<strong>https</strong>认为是不安全链接，被浏览器拦截。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2519,7 +2600,7 @@ ipc.on(&apos;build&apos;,function() {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2541,7 +2622,7 @@ ipc.on(&apos;build&apos;,function() {
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2639,7 +2720,7 @@ ipc.on(&apos;build&apos;,function() {
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
