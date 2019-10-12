@@ -272,6 +272,199 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2019/10/12/ideal-tomcat-marven/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MoviLee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/movi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Movi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/12/ideal-tomcat-marven/" itemprop="url">ideal启动tomcat(依赖marven插件)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-12T11:45:19+08:00">
+                2019-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/10/12/ideal-tomcat-marven/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://ncumovi.com/2019/10/12/ideal-tomcat-marven/" class="cy_cmt_count" data-xid="2019/10/12/ideal-tomcat-marven/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                   分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="\assets\js\APlayer.min.js"> </script><h4 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h4><p>此前写过一篇<a href="https://ncumovi.github.io/2018/11/09/ideal-tomcat/" target="_blank" rel="noopener">《ideal启动tomcat》</a>的博客，这篇文章建立在此基础之上，这里只讲述差异之处，相同之处不再赘述，为方便阐述，接下来我会将《ideal启动tomcat》这篇文章简称为上篇文章。</p>
+<h4 id="marven插件依赖选择"><a href="#marven插件依赖选择" class="headerlink" title="marven插件依赖选择"></a>marven插件依赖选择</h4><p>这里区别上篇文章所提到的libraries的配置。因为这里用的是marven插件库，故不用选择libraies，可以按照如下操作：</p>
+<p>1、建立在我们打开项目的基础之上，选择左上角file下面的setting,找到build Tools选项，选择右侧的marven,然后选择覆盖marven设置文件和仓库文件夹，这里默认的是远程仓库，我们要替换掉user setting file 和 local respository。这里简要说明一下，settingFile是marven设置文件，里面有远程仓库的账户和密码，有这个文件我们才能下载依赖，local respository这个文件夹是用来放下载下来的依赖的。</p>
+<p><img src="/img/ideal-tomcat-marven/select_marven1.png" alt="选择marven1"></p>
+<p><img src="/img/ideal-tomcat-marven/select_marven2.png" alt="选择marven2"></p>
+<p>2、我们需要在编辑器的右侧选择<strong>marven</strong> ，然后点击 <strong> + </strong>，选择后台代码<strong>atom</strong>下面的<strong>pom.xml</strong>文件。</p>
+<p><img src="/img/ideal-tomcat-marven/select_pom1.png" alt="选择pom1"></p>
+<p>点击刷新按钮开始下载插件</p>
+<p><img src="/img/ideal-tomcat-marven/select_pom2.png" alt="选择pom2"></p>
+<h2 id="配置tomcat"><a href="#配置tomcat" class="headerlink" title="配置tomcat"></a>配置tomcat</h2><p>这里的配置和上篇文章提到的配置是一样的，只对下图这个选项做个解释，这里表示是否有具有更新功能，默认是重新启动服务，但是我们有时候修改个别class不需要重启服务，所以选择更新资源，重新编译，避免时间的浪费。<br><img src="/img/ideal-tomcat-marven/set_tomcat.png" alt="选择p配置tomcatom"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2019/01/05/vue-component-js/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2364,190 +2557,6 @@ ipc.on(&apos;build&apos;,function() {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2018/02/01/https-theory/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="MoviLee">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/movi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Movi Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/01/https-theory/" itemprop="url">https-theory</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T14:56:09+08:00">
-                2018-02-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/02/01/https-theory/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://ncumovi.com/2018/02/01/https-theory/" class="cy_cmt_count" data-xid="2018/02/01/https-theory/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                   字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                   分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="\assets\js\APlayer.min.js"> </script><p><img src="/img/https-theory/xmind.png" alt="https原理思维导图"></p>
-<h4 id="https相关原理"><a href="#https相关原理" class="headerlink" title="https相关原理"></a><a href="http://blog.csdn.net/luocn99/article/details/39777707" target="_blank" rel="noopener">https相关原理</a></h4><h4 id="三次握手信号的原理"><a href="#三次握手信号的原理" class="headerlink" title="三次握手信号的原理"></a><a href="http://blog.csdn.net/cyfcsd/article/details/52049664" target="_blank" rel="noopener">三次握手信号的原理</a></h4><h4 id="HTTP的基本原理"><a href="#HTTP的基本原理" class="headerlink" title="HTTP的基本原理"></a><a href="http://blog.csdn.net/jiary5201314/article/details/51248145" target="_blank" rel="noopener">HTTP的基本原理</a></h4>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2602,7 +2611,7 @@ ipc.on(&apos;build&apos;,function() {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2624,7 +2633,7 @@ ipc.on(&apos;build&apos;,function() {
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
