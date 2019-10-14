@@ -272,6 +272,650 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2019/10/14/design-philosophy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MoviLee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/movi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Movi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/14/design-philosophy/" itemprop="url">关于js设计原则的简要总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-14T20:51:19+08:00">
+                2019-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/理论/" itemprop="url" rel="index">
+                    <span itemprop="name">理论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/10/14/design-philosophy/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://ncumovi.com/2019/10/14/design-philosophy/" class="cy_cmt_count" data-xid="2019/10/14/design-philosophy/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                   分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="\assets\js\APlayer.min.js"> </script><h4 id="1-、单一职责原则"><a href="#1-、单一职责原则" class="headerlink" title="(1)、单一职责原则"></a>(1)、单一职责原则</h4><p>引起类的变更或者模块变更原因应该有且仅有一个（There must be one reason for a class to change）翻译过来的原因就是说，一个方法或者对象只做一件事情，其逻辑肯定比一个负责多项功能的方法简单的多，降低各方法之间的耦合性，避免改动其中一个就影响到其他模块的概率，降低变更引起的风险。Animal这个类就做了一件事情，就是喵喵叫，当传进来的动物时候猫的时候，没有任何问题，但是如果传进来的是狗，就有问题了，按照单一职责原则，这个时候需要重新写个类。</p>
+<pre><code>function Anmimal(){
+    this.bark = function(animal){
+        console.log(animal+&apos;喵喵叫&apos;);
+    }
+}
+
+var animal = new Anmimal();
+animal.bark(&apos;猫&apos;);
+animal.bark(&apos;狗&apos;);
+
+function Anmimal1(){
+    this.bark = function(animal){
+        console.log(animal+&apos;汪汪叫&apos;);
+    }
+}
+
+var animal = new Anmimal1();
+animal.bark(&apos;狗&apos;);
+</code></pre><h4 id="2-迪米特法则"><a href="#2-迪米特法则" class="headerlink" title="(2)迪米特法则"></a>(2)迪米特法则</h4><p>也叫最少知道原则，一个对象应该对其他对象有尽可能少的了解。一个对象内可以按照单一职责原则拆分很多功能模块，但是只对外暴露统一的借口或者调用方法，无须调用者知道被调用者内部其他方法功能模块等。</p>
+<pre><code>function  People(){
+    run = () =&gt;{
+        console.log(&apos;run&apos;);
+        talk();
+    }
+
+    talk = () =&gt; {
+        console.log(&apos;talk&apos;);
+    }
+
+    return {
+        runAndTalk: run,
+    }
+}
+</code></pre><h4 id="3-依赖倒置原则"><a href="#3-依赖倒置原则" class="headerlink" title="(3)依赖倒置原则"></a>(3)依赖倒置原则</h4><p>参考java里面的抽象类和借口，只负责定义基础方法但是不具体实现，具体实现交给子类去实现，如果你依赖的不是基础类，而是一个复杂的业务类，任何一项变更都将会导致一系列的变化，从而引发风险，维护成本也会增加。</p>
+<h4 id="4-接口隔离原则"><a href="#4-接口隔离原则" class="headerlink" title="(4)接口隔离原则"></a>(4)接口隔离原则</h4><p>接口不能写的过于庞大和臃肿，尽可能的将拆分，将接口细化，个人理解类似一开始讲的单一职责原则，一个方法或者对象只负责一个功能，而不是一股脑的将所要功能写在一个方法里面，增加了耦合度。</p>
+<h4 id="5-替换原则"><a href="#5-替换原则" class="headerlink" title="(5)替换原则"></a>(5)替换原则</h4><p>子类要完全实现父类的方法，用父类地方可以完全用子类代替，子类可以扩展父类的功能，但是不能改变父类原有的功能，当功能扩展的时候，子类尽量不要去重写父类的方法，而是另写一个方法</p>
+<h4 id="6-开闭原则"><a href="#6-开闭原则" class="headerlink" title="(6)开闭原则"></a>(6)开闭原则</h4><p>开闭原则其实讲的就是代码的可扩展性，当遇到需求变更时，我们只需要在原来的基础上调用方法扩展，而不是直接去修改原有代码逻辑，从而引发对原有逻辑的影响，例如Vue的mixin混入方法就是开闭原则的最好体现。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2019/10/14/design-model/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MoviLee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/movi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Movi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/14/design-model/" itemprop="url">JS设计模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-14T20:08:19+08:00">
+                2019-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/理论/" itemprop="url" rel="index">
+                    <span itemprop="name">理论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/10/14/design-model/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://ncumovi.com/2019/10/14/design-model/" class="cy_cmt_count" data-xid="2019/10/14/design-model/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                   分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="\assets\js\APlayer.min.js"> </script><h4 id="关于js设计模式的简要总结"><a href="#关于js设计模式的简要总结" class="headerlink" title="关于js设计模式的简要总结"></a>关于js设计模式的简要总结</h4><p>按照功能我们将设计模式分为 创建型设计模式、结构性设计模式、行为设计模式、技巧型设计模式</p>
+<h4 id="创建型设计模式-创建对象的方式-："><a href="#创建型设计模式-创建对象的方式-：" class="headerlink" title="创建型设计模式(创建对象的方式)："></a>创建型设计模式(创建对象的方式)：</h4><p>(1)、工厂模式：定义一个方法，返回给你对象。需要创建对象的时候，只需要调用和这个工厂方法即返回对象，分为单一工厂模式和建造者模式。</p>
+<p>a、单一工厂模式：需要创建大量对象的时候，不关心创建过程，只关注创建结果，典型代表：JQuery</p>
+<pre><code>function factory(type){
+    //类型校验 防错处理
+    if(typeof type!=&apos;string&apos;){
+        throw new Error(&apos;type must be a string&apos;);
+    }
+
+    //如果调用的时候用new创建了新对象 则直接返回 无须再new 创建
+    if(this instanceof factory){
+        return this[type]();
+    }else{
+        return new factory(type);
+    }
+}
+factory.prototype={
+basketball:function(){
+    this.name=&apos;basketball&apos;;
+},
+tennis:function(){
+    this.name=&apos;tennis&apos;;
+}
+};
+</code></pre><p>b、建造者模式：创建一个定制化的对象，关注创建的过程，典型代表：Vue</p>
+<pre><code>new Vue({
+    data(){
+        return {
+            message:&apos;txt&apos;
+        }
+    },
+    methods:{
+        ...
+    }
+    ...
+})
+</code></pre><p>(2)、原型模式:创建一个共享的对象作为其他构造函数的原型对象，通过拷贝这个对象来创建新的类，用于创建重复的对象，带来性能上的提升。 </p>
+<pre><code>var animalProto = {
+    name:&apos;animal&apos;,
+    getName: function(){
+        return this.name;
+    }
+}
+
+function Animal(){
+
+}
+Animal.prototype = animalProto;
+</code></pre><p>(3)、单例模式：保证全局只有一个对象，不重复创建对象</p>
+<pre><code>//自执行函数返回一个对象
+
+var single=(function(){
+    //定义私有变量
+    function _a(){
+        this.a=123;
+    };
+    var ob = new _a();
+    return {
+    get:function(name){
+        return ob[name];
+    }
+    }
+})();
+</code></pre><h4 id="结构型设计模式：功能模块的拆分"><a href="#结构型设计模式：功能模块的拆分" class="headerlink" title="结构型设计模式：功能模块的拆分"></a>结构型设计模式：功能模块的拆分</h4><p>(1)、外观模式：为一组复杂的子系统接口提供一个更加高级的统一接口，在js中可以用于消除一些的底层的兼容性，和设计原则之迪米特法则相对应，对外暴露同意方法或接口，组装细分功能例如下例中的绑定事件，该方法中做了一系列的判断兼容处理，对外暴露的绑定事件方法无须关心底层是如何兼容的，直接调用即可</p>
+<pre><code>function addEvent(dom,type,fn){
+    if(dom.addEventListener){ //支持dom2级操作
+        dom.addEventListener(type,fn)
+    }else if(dom.attachEvent){ //不支持dom2 但支持attach方法
+        dom.attachEvent(&apos;on&apos;+type,fn)
+    }else{ //上面上个方法都不支持的方式
+        dom[&apos;on&apos;+type] = fn;
+    }
+}
+</code></pre><p>(2)、适配器模式：把不适合的接口适配成另一个接口</p>
+<pre><code>var bizPublic = (function(){
+    return newBizPublic.$bizMethod
+})()
+</code></pre><p>(3)、装饰器模式：把修改源码的行为改成扩展源码的行为，在不改变对象自身的基础上，动态的给某个对象添加额外的职责，不会影响原有接口的功能。一开始我们只有跑的功能，现在要求增加跳的功能，我们不是直接在run方法里面新增跳的功能，而是写一个装饰器函数，包含run和jump方法</p>
+<pre><code>function run(){
+    console.log(&apos;run&apos;)
+}
+
+function decoratorFn(fn,wrapedFn){
+    return function(){
+        fn();
+        wrapedFn();
+    }
+}
+decoratorFn(run, function(){
+    console.log(&apos;jump&apos;)
+})
+</code></pre><p>(4)、享元模式：分析对象内部方法和外部方法。然后把外部方法提取出来，内部方法继续保留。(重复的部分只做一次，if else只做差异性；只创建一次对象，类似于单例模式，共享这一个对象，个性化通过调用方法传不同的参数实现)</p>
+<pre><code>function uploadFile(){
+    this.upload = function(fileName){
+        ...
+    }
+}
+
+var uploadFileObj = new uploadFile();
+var arr = [&apos;file1&apos;,&apos;file2&apos;, ...];
+for(var i=0;i&lt;arr.length;i++){
+    uploadFileObj.upload(arr[i]);
+}
+</code></pre><h4 id="行为设计模式：模块之间的沟通"><a href="#行为设计模式：模块之间的沟通" class="headerlink" title="行为设计模式：模块之间的沟通"></a>行为设计模式：模块之间的沟通</h4><p>(1)、观察者模式：两个模块之间无法直接沟通或者不方便沟通，多用于异步</p>
+<pre><code>//观察者
+var observer = {
+    eventObj:{
+
+    },
+    add:function(type, fn){
+        this.eventObj[type] = fn;
+    },
+    remove:function(type){
+        this.eventObj[type] = null;
+    },
+    fire(type){
+        this.eventObj[type]();
+    }
+}
+//注册事件
+observer.add(&apos;test&apos;, function(){
+    console.log(&apos;test&apos;);
+});
+//触发事件
+observer.fire(&apos;test&apos;);
+</code></pre><p>(2)、状态模式:封装了一个对象的不同状态，只针对自己的对象提供服务</p>
+<pre><code>function Mary {
+    this._status = {
+        run:function(){
+            console.log(&apos;run&apos;);
+        },
+        jump:function(){
+            console.log(&apos;jump&apos;);
+        }
+        ...
+    }
+}
+Mary.prototype.changeStatus = function(status){
+    if(Array.isArray(status)){
+        for(let action of status){
+            this._status[action]();
+        }
+    }else{
+        this._status[status]();
+    }
+}
+
+var maryObj = new Mary();
+maryObj.changeStatus(&apos;run&apos;);
+maryObj.changeStatus([&apos;run&apos;,&apos;jump&apos;]);
+</code></pre><p>(3)、策略模式：封装了多个策略的对象，可以为多个对象提供服务，和状态模式相同都是为了解决if else分支过多的问题。</p>
+<pre><code>function priceMethods(){
+    //策略
+    var methods = {
+        percentage50(price){
+            return price*0.5
+        },
+        percentage70(price){
+            return price*0.7
+        },
+        percentage90(price){
+            return price*0.9
+        }
+    };
+    return function(methodName, args){
+        methods[methodName] &amp;&amp; methods[methodName].apply(this ,args)
+    }
+}
+</code></pre><p>(4)、命令模式：只关注命令本身，用一种松耦合的方式来设计程序，使得请求发送者和请求接收者能够消除彼此之间的耦合关系。</p>
+<pre><code>function setCommod(btn, fn){
+    btn.onClick = function(){
+        fn();
+    }
+}
+//命令或者理解为策略
+var refreshMenu = {
+    refresh:function(){
+        console.log(&apos;刷新菜单&apos;);
+    }
+}
+setCommod(btn1 ,refreshMenu.refresh)
+
+
+var msgCm = {
+    type:&apos;warn&apos;,
+    msg:&apos;警告&apos;,
+}
+
+function command(){
+    function create(iconDom ,msg){
+        var msgBox = document.createElement(&apos;div&apos;);
+        msgBox.innerHTML = msg
+        return iconDom + msg;
+    }
+    function display(content){
+        var bodyDom = document.getElementsByTagName(&apos;body&apos;);
+        bodyDom.appendChild(content);
+    }
+    function _excute(command){
+    var state={
+        wran:&quot;&lt;img src=&apos;imgage/wran.svg&apos;/&gt;&quot;,
+        confirm:&quot;&quot;,
+    }
+    display(create(state[command.type],command.msg));
+    }
+    return {
+        excute:_excute
+    }
+}
+
+command().excute(cm);
+</code></pre><p>(5)、迭代器模式：对于集合内部结果常常变化各异，我们不想暴露其内部结构的话，但又想让客户代码透明地访问其中的元素，这种情况下我们可以使用迭代器模式。典型的就是forEach,map以及jQ的$each方法。</p>
+<p>(6)、解释器模式：给定一个语言，定义它的文法的一种表示，并定义一个解释器，这个解释器使用该表示来解释语言中的句子。</p>
+<h4 id="技巧型设计模式-一种优化方式"><a href="#技巧型设计模式-一种优化方式" class="headerlink" title="技巧型设计模式:一种优化方式"></a>技巧型设计模式:一种优化方式</h4><p>(1)、链模式：可简单理解为链式调用</p>
+<p>(2)、委托模式：给事件发生的上一层最近的父元素绑定事件就是典型的委托方式</p>
+<p>(3)、节流模式：函数节流，设置延时器，一定时间以后执行，如果延时期间再次被触发，则清掉当前的延时器，重新设置新的延时器，直到最后只执行最后一次调用。</p>
+<pre><code>var timer;
+function delay(){
+    clearTimeout(timer);
+    timer  = setTimeout(function(){
+        console.log(&apos;1&apos;)
+    },1000)
+}
+btn.onClick = function(){
+    delay();
+}
+</code></pre><p>(4)、惰性模式：初始化的时候制定不变，下次初始化的时候再重新指定。减少每次代码 执行时重复的分支判断，通过对对象重新定义屏蔽原对象中的分支判断。</p>
+<pre><code>var type = &apos;warn&apos;;
+var msg = (function (){
+    if(type == &apos;warn&apos;){
+    return  function(){
+            console.log(&apos;wran&apos;)
+        }
+    }else{
+        return function(){
+            console.log(&apos;error&apos;)
+        }
+    }
+})()
+</code></pre><p>(5)、等待者模式：可参考promise.all的实现原理</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2019/10/12/ideal-tomcat-marven/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1994,569 +2638,6 @@ mysql -u test -p;
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2018/02/09/js-module/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="MoviLee">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/movi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Movi Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/09/js-module/" itemprop="url">js模块化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-09T14:25:36+08:00">
-                2018-02-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/02/09/js-module/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://ncumovi.com/2018/02/09/js-module/" class="cy_cmt_count" data-xid="2018/02/09/js-module/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                   字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                   分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="\assets\js\APlayer.min.js"> </script><h2 id="Commonjs"><a href="#Commonjs" class="headerlink" title="Commonjs"></a>Commonjs</h2><ul>
-<li><p>Node.js采用了这个规范。 根据CommonJS规范，一个单独的文件就是一个模块。模块的输出必须通过module.exports导出对外的变量或接口，加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的exports对象。</p>
-</li>
-<li><p>在网上看了很多的Commonjs模块的定义，但是去没有说要在node的环境中，否则会报错<strong>module is not defined</strong>。只有在node环境中，每一个node.js执行文件，都自动创建一个module对象，同时，module对象会创建一个叫exports的属性，初始化的值是 {}。而exports是引用 module.exports的值。module.exports 被改变的时候，exports不会被改变，当模块导出的时候，真正导出的执行是module.exports，而不是exports。具体可以参考 <a href="https://www.jianshu.com/p/7b9f84dbb576" target="_blank" rel="noopener">NodeJS中的modu.exports和exports</a></p>
-</li>
-</ul>
-<h4 id="AMD规范"><a href="#AMD规范" class="headerlink" title="AMD规范"></a>AMD规范</h4><ul>
-<li><p>相比服务器端广泛使同步加载的CommonJS规范, AMD（异步模块定义）是为浏览器环境设计的。</p>
-</li>
-<li><p>requirejs即为遵循AMD规范的模块化工具。通过define方法，将代码定义为模块，然后再require进来</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//a.js  定义模块</span><br><span class="line">define(<span class="keyword">function</span>(require, exports, module) &#123;</span><br><span class="line">    //  导出模块内容</span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">        a :<span class="string">'movi'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//b.js 加载模块</span><br><span class="line">require([<span class="string">'a'</span>], <span class="keyword">function</span> (a) &#123;</span><br><span class="line">    console.log(a)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="CommonJS与AMD"><a href="#CommonJS与AMD" class="headerlink" title="CommonJS与AMD"></a>CommonJS与AMD</h4><p>上面也提到了CommonJS是同步加载模块，也就是说只有加载完成才能执行后续的操作，而AMD是异步加载，允许在回调函数中处理。</p>
-<p>由于Node.js主要用于服务器编程，模块文件一般都已经存在于本地硬盘，所以加载起来比较快，不用考虑非同步加载的方式，所以CommonJS规范比较适用。但是，如果是浏览器环境，要从服务器端加载模块，这时就必须采用非同步模式，因此浏览器端一般采用AMD规范。</p>
-<p>兼容CommonJS规范的AMD模块输出，这时候需要在定义模块的define方法中这样写：</p>
-<pre><code>define(function(require,exports,module){
-    var a = require(&quot;a&quot;);
-    var b = require(&quot;b&quot;);
-    ……
-    exports.c = function(){
-
-    }
-})
-</code></pre><h4 id="ES6-Modules"><a href="#ES6-Modules" class="headerlink" title="ES6 Modules"></a>ES6 Modules</h4><p>ES6语法里面的模块输出<strong>export</strong>和加载模块<strong>import</strong>。之前是在vue的脚手架里面开发，用import和export的时候比较多。因为是ES6语法里面的，所以是无法直接在html页面中使用的，必须要在脚手架或者经过webpack编译打包以后才能使用。</p>
-<p>导出模块 a.js</p>
-<pre><code>//导出变量
-export var color = &quot;red&quot;;
-export let name = &quot;cz&quot;;
-export const age = 25;
-
-//导出函数
-export function add(num1,num2){
-    return num1+num2;
-}
-</code></pre><p>导入模块 b.js</p>
-<pre><code>import { color,add } from &quot;./a.js&quot;
-</code></pre><p>可参考<a href="http://blog.csdn.net/crystal6918/article/details/74906757" target="_blank" rel="noopener">CommonJS、requirejs、ES6的对比</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2018/02/05/desk-appliction/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="MoviLee">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/movi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Movi Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/05/desk-appliction/" itemprop="url">使用electron打包桌面应用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-05T10:31:19+08:00">
-                2018-02-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/02/05/desk-appliction/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://ncumovi.com/2018/02/05/desk-appliction/" class="cy_cmt_count" data-xid="2018/02/05/desk-appliction/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                   字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                   分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="\assets\js\APlayer.min.js"> </script><h2 id="项目代码"><a href="#项目代码" class="headerlink" title="项目代码"></a>项目代码</h2><p><a href="https://github.com/ncumovi/gallery-desk-application" target="_blank" rel="noopener">github仓库代码</a></p>
-<h2 id="vue项目"><a href="#vue项目" class="headerlink" title="vue项目"></a>vue项目</h2><p>确保自己有一个vue项目，可以是vue脚手架工程目录，也可以是已经生成的静态资源文件</p>
-<h2 id="electron安装与使用"><a href="#electron安装与使用" class="headerlink" title="electron安装与使用"></a>electron安装与使用</h2><h4 id="安装electron以及相关工具"><a href="#安装electron以及相关工具" class="headerlink" title="安装electron以及相关工具"></a>安装electron以及相关工具</h4><p>在项目根目录下面运行<strong>npm install electron –save-dev</strong> <a href="https://electronjs.org/" target="_blank" rel="noopener">安装electron</a></p>
-<p><strong>npm install electron-packager –save-dev</strong> <a href="https://github.com/electron-userland/electron-packager" target="_blank" rel="noopener">安装exe打包工具</a></p>
-<p><strong>npm install grunt –save-dev</strong> 安装grunt用于打包可安装的exe</p>
-<p><strong>npm install –save-dev grunt-electron-installer</strong> <a href="https://github.com/electron-archive/grunt-electron-installer" target="_blank" rel="noopener">安装grunt打包可安装的exe插件</a></p>
-<h4 id="在本地克隆electron官方demo项目"><a href="#在本地克隆electron官方demo项目" class="headerlink" title="在本地克隆electron官方demo项目"></a>在本地克隆electron官方demo项目</h4><p>git clone <a href="https://github.com/electron/electron-quick-start" target="_blank" rel="noopener">https://github.com/electron/electron-quick-start</a></p>
-<h4 id="在Vue项目里面引入electron主程序main-js"><a href="#在Vue项目里面引入electron主程序main-js" class="headerlink" title="在Vue项目里面引入electron主程序main.js"></a>在Vue项目里面引入electron主程序main.js</h4><p>把electron-quick-start项目中的main.js搬到vue的build文件中，并改个名字electron.js。</p>
-<p>将electron.js里面的文件路径修改成符合本项目的路径</p>
-<pre><code>mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, &apos;../dist/index.html&apos;),
-    protocol: &apos;file:&apos;,
-    slashes: true
-}))
-</code></pre><h4 id="在package-json中添加入口"><a href="#在package-json中添加入口" class="headerlink" title="在package.json中添加入口"></a>在package.json中添加入口</h4><pre><code>&quot;scripts&quot;: {
-    &quot;dev&quot;: &quot;webpack-dev-server --inline --progress --config build/webpack.dev.conf.js&quot;,
-    &quot;start&quot;: &quot;npm run dev&quot;,
-    &quot;build&quot;: &quot;node build/build.js&quot;,
-    &quot;electron_dev&quot;: &quot;electron build/electron.js&quot;,  //本地调试用
-    //打包成不用安装的exe文件
-    &quot;electron_build&quot;: &quot;electron-packager ./dist/ beanSprout --win --out beanSprout --platform=win32 --arch=x64 --icon=./src/assets/favicon.ico --version 1.3.4.0  --ignore=node_modules --overwrite&quot;, 
-    &quot;ele_setup_build&quot;: &quot;grunt&quot; //打包成可安装的安装包
-},
-</code></pre><h2 id="dev-调试环境"><a href="#dev-调试环境" class="headerlink" title="dev 调试环境"></a>dev 调试环境</h2><p>先运行<strong>npm run build</strong>将vue项目打包成静态资源文件，再运行<strong>electron_dev</strong>即可看到调试环境下的桌面应用</p>
-<h2 id="打包不用安装的exe文件-electron-packager"><a href="#打包不用安装的exe文件-electron-packager" class="headerlink" title="打包不用安装的exe文件(electron-packager)"></a>打包不用安装的exe文件(electron-packager)</h2><p>运行<strong>npm run electron_build</strong>即可打包成不用安装的exe文件</p>
-<p>“electron-packager ./dist/ beanSprout –win –out beanSprout –platform=win32 –arch=x64 –icon=./src/assets/favicon.ico –version 1.3.4.0  –ignore=node_modules –overwrite”</p>
-<p>1、 ‘./dist’ 表示打包的源文件，即dist目录下面打包好的资源文件(需要在这个目录下面添加electron运行的入口)</p>
-<pre><code>dist
-├── static
-├── index.html
-├── main.js
-└── package.json
-</code></pre><p>这里的main.js就是build目录下面的electron.js，不过这里的路径要修改一下</p>
-<pre><code>mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, &apos;index.html&apos;),  //这里的路径要修改
-    protocol: &apos;file:&apos;,
-    slashes: true
-}))
-</code></pre><p>2、’beanSprout’ 打包exe的名字</p>
-<p>3、 ‘–win –out beanSprout’ 输出的文件夹名字</p>
-<p>4、’–platform=win32’ 平台</p>
-<p>5、 ‘–icon=./src/assets/favicon.ico’ 打包以后的icon，即exe图标</p>
-<p>打包成功以后的目录如下</p>
-<pre><code>beanSprout
-    └── beanSprout-win32-x64
-                ├── ...
-                └── beanSprout.exe  //双击即可运行
-</code></pre><p>本例参看 <a href="http://blog.csdn.net/j_bleach/article/details/78513282" target="_blank" rel="noopener">j_bleach博客-electron 将pc端（vue）页面打包为桌面端应用</a></p>
-<h2 id="打包需要安装的exe文件目录-grunt-electron-installer"><a href="#打包需要安装的exe文件目录-grunt-electron-installer" class="headerlink" title="打包需要安装的exe文件目录(grunt-electron-installer)"></a>打包需要安装的exe文件目录(grunt-electron-installer)</h2><p>首先在根目录下面新建<strong>Gruntfile.js</strong></p>
-<pre><code>var grunt = require(&apos;grunt&apos;);
-
-//进行配置
-grunt.config.init({
-pkg:grunt.file.readJSON(&apos;package.json&apos;),
-&apos;create-windows-installer&apos;: {
-    x64: {
-        appDirectory: &apos;./beanSprout/beanSprout-win32-x64&apos;, //已经打包的electron App目录
-        outputDirectory: &apos;./beanSprout/beanSproutSetup&apos;,    //输出的资源目录
-        authors: &apos;movi&apos;,    //发布者
-        exe: &apos;beanSprout.exe&apos;,  //这里的名字要和之前打包成不需安装exe文件的名字保持一致
-        description:&quot; A desk application based on vue and elecron&quot;,
-        loadingGif:&quot;./src/assets/install.gif&quot;,  //安装动画
-        setupIcon:&quot;./src/assets/favicon.ico&quot; //生成桌面快捷方式的图标
-    }
-}
-})
-
-//加载任务
-grunt.loadNpmTasks(&apos;grunt-electron-installer&apos;)
-
-//设置默认任务
-grunt.registerTask(&apos;default&apos;,[&apos;create-windows-installer&apos;])
-
-grunt.tasks()
-</code></pre><p>运行<strong>npm run ele_setup_build</strong>即可打包成需要安装的exe文件目录</p>
-<p>打包成功以后的目录如下</p>
-<pre><code>beanSprout
-    └── beanSproutSetup
-            ├── ...
-            └── Setup.exe  //双击开始安装
-</code></pre><p>可参看 <a href="http://blog.csdn.net/w342916053/article/details/51701722" target="_blank" rel="noopener">Long-Island的博客-使用Grunt 插件打包Electron Windows应用</a></p>
-<h2 id="自动生成快捷方式"><a href="#自动生成快捷方式" class="headerlink" title="自动生成快捷方式"></a>自动生成快捷方式</h2><p>需要在./dist/main.js加上如下代码</p>
-<pre><code>var handleStartupEvent = function() {
-if (process.platform !== &apos;win32&apos;) {
-    return false;
-}
-
-var squirrelCommand = process.argv[1];
-switch (squirrelCommand) {
-    case &apos;--squirrel-install&apos;:
-    case &apos;--squirrel-updated&apos;:
-    install();
-    return true;
-    case &apos;--squirrel-uninstall&apos;:
-    uninstall();
-    app.quit();
-    return true;
-    case &apos;--squirrel-obsolete&apos;:
-    app.quit();
-    return true;
-}
-
-// 安装
-function install() {
-    var cp = require(&apos;child_process&apos;);
-    var updateDotExe = path.resolve(path.dirname(process.execPath), &apos;..&apos;, &apos;update.exe&apos;);
-    var target = path.basename(process.execPath);
-    var child = cp.spawn(updateDotExe, [&quot;--createShortcut&quot;, target], { detached: true });
-    child.on(&apos;close&apos;, function(code) {
-        app.quit();
-    });
-}
-
-
-// 卸载
-function uninstall() {
-    var cp = require(&apos;child_process&apos;);
-    var updateDotExe = path.resolve(path.dirname(process.execPath), &apos;..&apos;, &apos;update.exe&apos;);
-    var target = path.basename(process.execPath);
-    var child = cp.spawn(updateDotExe, [&quot;--removeShortcut&quot;, target], { detached: true });
-    child.on(&apos;close&apos;, function(code) {
-        app.quit();
-    });
-}
-
-};
-
-if (handleStartupEvent()) {
-return;
-}
-</code></pre><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>当在dist目录下面生成electron app时，在packjson里面定义版本号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;name&quot;: &quot;beanSprout&quot;,</span><br><span class="line">&quot;version&quot;: &quot;1.0.1&quot;   //亲测1.0.0和1.0.1有用</span><br></pre></td></tr></table></figure></p>
-<p>这里的版本不能随便写，不然在用<strong>grunt-electron-installer</strong>打包成安装应用时会提示版本号不对，不符合规范等，导致打包失败</p>
-<h2 id="新版功能用到的知识"><a href="#新版功能用到的知识" class="headerlink" title="新版功能用到的知识"></a>新版功能用到的知识</h2><p>1、引入electron shell模块运行bat脚本</p>
-<pre><code>const {shell} = require(&apos;electron&apos;);
-shell.openItem(path); //path 本地bat文件的路径
-</code></pre><p>增加*.bat脚本 可以执行相关js操作 类似于cmd窗口，在bat脚本前面加入以下代码可以隐藏cmd运行窗口</p>
-<pre><code>@echo off
-if &quot;%1&quot; == &quot;h&quot; goto begin
-mshta vbscript:createobject(&quot;wscript.shell&quot;).run(&quot;&quot;&quot;%~nx0&quot;&quot; h&quot;,0)(window.close)&amp;&amp;exit
-:begin
-</code></pre><p>2、将根目录下面的package.json文件中的入口修改如下,删除build下面的electron.js</p>
-<pre><code>&quot;scripts&quot;: {
-    ...
-    &quot;electron_dev&quot;: &quot;electron dist/main.js &quot;,
-    ...
-},
-</code></pre><p>3、新增add-new.html用于上传图片储存本地，用到的相关模块如下</p>
-<pre><code>node.js的fs模块的fs.open()、fs.write()、fs.writeFile()写文件和修改文件
-</code></pre><p>4、页面之间的通讯</p>
-<pre><code>//add-new.html文件里面js
-const ipc = require(&apos;electron&apos;).ipcMain;    
-ipc.send(&apos;build&apos;) //build的指令。send到主进程index.js中。
-
-//main.js主程序接收事件
-const ipc = require(&apos;electron&apos;).ipcMain;
-ipc.on(&apos;build&apos;,function() {
-    shell.openItem(path_run_dev);
-})
-</code></pre><h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p>最初的想法是想在electron外壳上加菜单栏，属于系统菜单，因此新建菜单。但是实际过程中因为路径的问题操作起来比较费劲，在你打包成exe文件的时候，只是把vue打包生成的静态资源文件夹dist打包了过去，如果你只是单纯的手动在dist里面添加页面，那么在打包的时候一定会报错。后来发现应该在vue里面写add-new模块的功能，在页面实现菜单相关功能会更容易实现些。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2611,7 +2692,7 @@ ipc.on(&apos;build&apos;,function() {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2622,7 +2703,7 @@ ipc.on(&apos;build&apos;,function() {
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2633,7 +2714,7 @@ ipc.on(&apos;build&apos;,function() {
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

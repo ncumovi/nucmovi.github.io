@@ -272,6 +272,569 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2018/02/09/js-module/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MoviLee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/movi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Movi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/09/js-module/" itemprop="url">js模块化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-09T14:25:36+08:00">
+                2018-02-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/02/09/js-module/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://ncumovi.com/2018/02/09/js-module/" class="cy_cmt_count" data-xid="2018/02/09/js-module/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                   分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="\assets\js\APlayer.min.js"> </script><h2 id="Commonjs"><a href="#Commonjs" class="headerlink" title="Commonjs"></a>Commonjs</h2><ul>
+<li><p>Node.js采用了这个规范。 根据CommonJS规范，一个单独的文件就是一个模块。模块的输出必须通过module.exports导出对外的变量或接口，加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的exports对象。</p>
+</li>
+<li><p>在网上看了很多的Commonjs模块的定义，但是去没有说要在node的环境中，否则会报错<strong>module is not defined</strong>。只有在node环境中，每一个node.js执行文件，都自动创建一个module对象，同时，module对象会创建一个叫exports的属性，初始化的值是 {}。而exports是引用 module.exports的值。module.exports 被改变的时候，exports不会被改变，当模块导出的时候，真正导出的执行是module.exports，而不是exports。具体可以参考 <a href="https://www.jianshu.com/p/7b9f84dbb576" target="_blank" rel="noopener">NodeJS中的modu.exports和exports</a></p>
+</li>
+</ul>
+<h4 id="AMD规范"><a href="#AMD规范" class="headerlink" title="AMD规范"></a>AMD规范</h4><ul>
+<li><p>相比服务器端广泛使同步加载的CommonJS规范, AMD（异步模块定义）是为浏览器环境设计的。</p>
+</li>
+<li><p>requirejs即为遵循AMD规范的模块化工具。通过define方法，将代码定义为模块，然后再require进来</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//a.js  定义模块</span><br><span class="line">define(<span class="keyword">function</span>(require, exports, module) &#123;</span><br><span class="line">    //  导出模块内容</span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">        a :<span class="string">'movi'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//b.js 加载模块</span><br><span class="line">require([<span class="string">'a'</span>], <span class="keyword">function</span> (a) &#123;</span><br><span class="line">    console.log(a)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="CommonJS与AMD"><a href="#CommonJS与AMD" class="headerlink" title="CommonJS与AMD"></a>CommonJS与AMD</h4><p>上面也提到了CommonJS是同步加载模块，也就是说只有加载完成才能执行后续的操作，而AMD是异步加载，允许在回调函数中处理。</p>
+<p>由于Node.js主要用于服务器编程，模块文件一般都已经存在于本地硬盘，所以加载起来比较快，不用考虑非同步加载的方式，所以CommonJS规范比较适用。但是，如果是浏览器环境，要从服务器端加载模块，这时就必须采用非同步模式，因此浏览器端一般采用AMD规范。</p>
+<p>兼容CommonJS规范的AMD模块输出，这时候需要在定义模块的define方法中这样写：</p>
+<pre><code>define(function(require,exports,module){
+    var a = require(&quot;a&quot;);
+    var b = require(&quot;b&quot;);
+    ……
+    exports.c = function(){
+
+    }
+})
+</code></pre><h4 id="ES6-Modules"><a href="#ES6-Modules" class="headerlink" title="ES6 Modules"></a>ES6 Modules</h4><p>ES6语法里面的模块输出<strong>export</strong>和加载模块<strong>import</strong>。之前是在vue的脚手架里面开发，用import和export的时候比较多。因为是ES6语法里面的，所以是无法直接在html页面中使用的，必须要在脚手架或者经过webpack编译打包以后才能使用。</p>
+<p>导出模块 a.js</p>
+<pre><code>//导出变量
+export var color = &quot;red&quot;;
+export let name = &quot;cz&quot;;
+export const age = 25;
+
+//导出函数
+export function add(num1,num2){
+    return num1+num2;
+}
+</code></pre><p>导入模块 b.js</p>
+<pre><code>import { color,add } from &quot;./a.js&quot;
+</code></pre><p>可参考<a href="http://blog.csdn.net/crystal6918/article/details/74906757" target="_blank" rel="noopener">CommonJS、requirejs、ES6的对比</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2018/02/05/desk-appliction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MoviLee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/movi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Movi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/05/desk-appliction/" itemprop="url">使用electron打包桌面应用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-05T10:31:19+08:00">
+                2018-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/02/05/desk-appliction/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://ncumovi.com/2018/02/05/desk-appliction/" class="cy_cmt_count" data-xid="2018/02/05/desk-appliction/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                   分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="\assets\js\APlayer.min.js"> </script><h2 id="项目代码"><a href="#项目代码" class="headerlink" title="项目代码"></a>项目代码</h2><p><a href="https://github.com/ncumovi/gallery-desk-application" target="_blank" rel="noopener">github仓库代码</a></p>
+<h2 id="vue项目"><a href="#vue项目" class="headerlink" title="vue项目"></a>vue项目</h2><p>确保自己有一个vue项目，可以是vue脚手架工程目录，也可以是已经生成的静态资源文件</p>
+<h2 id="electron安装与使用"><a href="#electron安装与使用" class="headerlink" title="electron安装与使用"></a>electron安装与使用</h2><h4 id="安装electron以及相关工具"><a href="#安装electron以及相关工具" class="headerlink" title="安装electron以及相关工具"></a>安装electron以及相关工具</h4><p>在项目根目录下面运行<strong>npm install electron –save-dev</strong> <a href="https://electronjs.org/" target="_blank" rel="noopener">安装electron</a></p>
+<p><strong>npm install electron-packager –save-dev</strong> <a href="https://github.com/electron-userland/electron-packager" target="_blank" rel="noopener">安装exe打包工具</a></p>
+<p><strong>npm install grunt –save-dev</strong> 安装grunt用于打包可安装的exe</p>
+<p><strong>npm install –save-dev grunt-electron-installer</strong> <a href="https://github.com/electron-archive/grunt-electron-installer" target="_blank" rel="noopener">安装grunt打包可安装的exe插件</a></p>
+<h4 id="在本地克隆electron官方demo项目"><a href="#在本地克隆electron官方demo项目" class="headerlink" title="在本地克隆electron官方demo项目"></a>在本地克隆electron官方demo项目</h4><p>git clone <a href="https://github.com/electron/electron-quick-start" target="_blank" rel="noopener">https://github.com/electron/electron-quick-start</a></p>
+<h4 id="在Vue项目里面引入electron主程序main-js"><a href="#在Vue项目里面引入electron主程序main-js" class="headerlink" title="在Vue项目里面引入electron主程序main.js"></a>在Vue项目里面引入electron主程序main.js</h4><p>把electron-quick-start项目中的main.js搬到vue的build文件中，并改个名字electron.js。</p>
+<p>将electron.js里面的文件路径修改成符合本项目的路径</p>
+<pre><code>mainWindow.loadURL(url.format({
+    pathname: path.join(__dirname, &apos;../dist/index.html&apos;),
+    protocol: &apos;file:&apos;,
+    slashes: true
+}))
+</code></pre><h4 id="在package-json中添加入口"><a href="#在package-json中添加入口" class="headerlink" title="在package.json中添加入口"></a>在package.json中添加入口</h4><pre><code>&quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;webpack-dev-server --inline --progress --config build/webpack.dev.conf.js&quot;,
+    &quot;start&quot;: &quot;npm run dev&quot;,
+    &quot;build&quot;: &quot;node build/build.js&quot;,
+    &quot;electron_dev&quot;: &quot;electron build/electron.js&quot;,  //本地调试用
+    //打包成不用安装的exe文件
+    &quot;electron_build&quot;: &quot;electron-packager ./dist/ beanSprout --win --out beanSprout --platform=win32 --arch=x64 --icon=./src/assets/favicon.ico --version 1.3.4.0  --ignore=node_modules --overwrite&quot;, 
+    &quot;ele_setup_build&quot;: &quot;grunt&quot; //打包成可安装的安装包
+},
+</code></pre><h2 id="dev-调试环境"><a href="#dev-调试环境" class="headerlink" title="dev 调试环境"></a>dev 调试环境</h2><p>先运行<strong>npm run build</strong>将vue项目打包成静态资源文件，再运行<strong>electron_dev</strong>即可看到调试环境下的桌面应用</p>
+<h2 id="打包不用安装的exe文件-electron-packager"><a href="#打包不用安装的exe文件-electron-packager" class="headerlink" title="打包不用安装的exe文件(electron-packager)"></a>打包不用安装的exe文件(electron-packager)</h2><p>运行<strong>npm run electron_build</strong>即可打包成不用安装的exe文件</p>
+<p>“electron-packager ./dist/ beanSprout –win –out beanSprout –platform=win32 –arch=x64 –icon=./src/assets/favicon.ico –version 1.3.4.0  –ignore=node_modules –overwrite”</p>
+<p>1、 ‘./dist’ 表示打包的源文件，即dist目录下面打包好的资源文件(需要在这个目录下面添加electron运行的入口)</p>
+<pre><code>dist
+├── static
+├── index.html
+├── main.js
+└── package.json
+</code></pre><p>这里的main.js就是build目录下面的electron.js，不过这里的路径要修改一下</p>
+<pre><code>mainWindow.loadURL(url.format({
+    pathname: path.join(__dirname, &apos;index.html&apos;),  //这里的路径要修改
+    protocol: &apos;file:&apos;,
+    slashes: true
+}))
+</code></pre><p>2、’beanSprout’ 打包exe的名字</p>
+<p>3、 ‘–win –out beanSprout’ 输出的文件夹名字</p>
+<p>4、’–platform=win32’ 平台</p>
+<p>5、 ‘–icon=./src/assets/favicon.ico’ 打包以后的icon，即exe图标</p>
+<p>打包成功以后的目录如下</p>
+<pre><code>beanSprout
+    └── beanSprout-win32-x64
+                ├── ...
+                └── beanSprout.exe  //双击即可运行
+</code></pre><p>本例参看 <a href="http://blog.csdn.net/j_bleach/article/details/78513282" target="_blank" rel="noopener">j_bleach博客-electron 将pc端（vue）页面打包为桌面端应用</a></p>
+<h2 id="打包需要安装的exe文件目录-grunt-electron-installer"><a href="#打包需要安装的exe文件目录-grunt-electron-installer" class="headerlink" title="打包需要安装的exe文件目录(grunt-electron-installer)"></a>打包需要安装的exe文件目录(grunt-electron-installer)</h2><p>首先在根目录下面新建<strong>Gruntfile.js</strong></p>
+<pre><code>var grunt = require(&apos;grunt&apos;);
+
+//进行配置
+grunt.config.init({
+pkg:grunt.file.readJSON(&apos;package.json&apos;),
+&apos;create-windows-installer&apos;: {
+    x64: {
+        appDirectory: &apos;./beanSprout/beanSprout-win32-x64&apos;, //已经打包的electron App目录
+        outputDirectory: &apos;./beanSprout/beanSproutSetup&apos;,    //输出的资源目录
+        authors: &apos;movi&apos;,    //发布者
+        exe: &apos;beanSprout.exe&apos;,  //这里的名字要和之前打包成不需安装exe文件的名字保持一致
+        description:&quot; A desk application based on vue and elecron&quot;,
+        loadingGif:&quot;./src/assets/install.gif&quot;,  //安装动画
+        setupIcon:&quot;./src/assets/favicon.ico&quot; //生成桌面快捷方式的图标
+    }
+}
+})
+
+//加载任务
+grunt.loadNpmTasks(&apos;grunt-electron-installer&apos;)
+
+//设置默认任务
+grunt.registerTask(&apos;default&apos;,[&apos;create-windows-installer&apos;])
+
+grunt.tasks()
+</code></pre><p>运行<strong>npm run ele_setup_build</strong>即可打包成需要安装的exe文件目录</p>
+<p>打包成功以后的目录如下</p>
+<pre><code>beanSprout
+    └── beanSproutSetup
+            ├── ...
+            └── Setup.exe  //双击开始安装
+</code></pre><p>可参看 <a href="http://blog.csdn.net/w342916053/article/details/51701722" target="_blank" rel="noopener">Long-Island的博客-使用Grunt 插件打包Electron Windows应用</a></p>
+<h2 id="自动生成快捷方式"><a href="#自动生成快捷方式" class="headerlink" title="自动生成快捷方式"></a>自动生成快捷方式</h2><p>需要在./dist/main.js加上如下代码</p>
+<pre><code>var handleStartupEvent = function() {
+if (process.platform !== &apos;win32&apos;) {
+    return false;
+}
+
+var squirrelCommand = process.argv[1];
+switch (squirrelCommand) {
+    case &apos;--squirrel-install&apos;:
+    case &apos;--squirrel-updated&apos;:
+    install();
+    return true;
+    case &apos;--squirrel-uninstall&apos;:
+    uninstall();
+    app.quit();
+    return true;
+    case &apos;--squirrel-obsolete&apos;:
+    app.quit();
+    return true;
+}
+
+// 安装
+function install() {
+    var cp = require(&apos;child_process&apos;);
+    var updateDotExe = path.resolve(path.dirname(process.execPath), &apos;..&apos;, &apos;update.exe&apos;);
+    var target = path.basename(process.execPath);
+    var child = cp.spawn(updateDotExe, [&quot;--createShortcut&quot;, target], { detached: true });
+    child.on(&apos;close&apos;, function(code) {
+        app.quit();
+    });
+}
+
+
+// 卸载
+function uninstall() {
+    var cp = require(&apos;child_process&apos;);
+    var updateDotExe = path.resolve(path.dirname(process.execPath), &apos;..&apos;, &apos;update.exe&apos;);
+    var target = path.basename(process.execPath);
+    var child = cp.spawn(updateDotExe, [&quot;--removeShortcut&quot;, target], { detached: true });
+    child.on(&apos;close&apos;, function(code) {
+        app.quit();
+    });
+}
+
+};
+
+if (handleStartupEvent()) {
+return;
+}
+</code></pre><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>当在dist目录下面生成electron app时，在packjson里面定义版本号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;name&quot;: &quot;beanSprout&quot;,</span><br><span class="line">&quot;version&quot;: &quot;1.0.1&quot;   //亲测1.0.0和1.0.1有用</span><br></pre></td></tr></table></figure></p>
+<p>这里的版本不能随便写，不然在用<strong>grunt-electron-installer</strong>打包成安装应用时会提示版本号不对，不符合规范等，导致打包失败</p>
+<h2 id="新版功能用到的知识"><a href="#新版功能用到的知识" class="headerlink" title="新版功能用到的知识"></a>新版功能用到的知识</h2><p>1、引入electron shell模块运行bat脚本</p>
+<pre><code>const {shell} = require(&apos;electron&apos;);
+shell.openItem(path); //path 本地bat文件的路径
+</code></pre><p>增加*.bat脚本 可以执行相关js操作 类似于cmd窗口，在bat脚本前面加入以下代码可以隐藏cmd运行窗口</p>
+<pre><code>@echo off
+if &quot;%1&quot; == &quot;h&quot; goto begin
+mshta vbscript:createobject(&quot;wscript.shell&quot;).run(&quot;&quot;&quot;%~nx0&quot;&quot; h&quot;,0)(window.close)&amp;&amp;exit
+:begin
+</code></pre><p>2、将根目录下面的package.json文件中的入口修改如下,删除build下面的electron.js</p>
+<pre><code>&quot;scripts&quot;: {
+    ...
+    &quot;electron_dev&quot;: &quot;electron dist/main.js &quot;,
+    ...
+},
+</code></pre><p>3、新增add-new.html用于上传图片储存本地，用到的相关模块如下</p>
+<pre><code>node.js的fs模块的fs.open()、fs.write()、fs.writeFile()写文件和修改文件
+</code></pre><p>4、页面之间的通讯</p>
+<pre><code>//add-new.html文件里面js
+const ipc = require(&apos;electron&apos;).ipcMain;    
+ipc.send(&apos;build&apos;) //build的指令。send到主进程index.js中。
+
+//main.js主程序接收事件
+const ipc = require(&apos;electron&apos;).ipcMain;
+ipc.on(&apos;build&apos;,function() {
+    shell.openItem(path_run_dev);
+})
+</code></pre><h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p>最初的想法是想在electron外壳上加菜单栏，属于系统菜单，因此新建菜单。但是实际过程中因为路径的问题操作起来比较费劲，在你打包成exe文件的时候，只是把vue打包生成的静态资源文件夹dist打包了过去，如果你只是单纯的手动在dist里面添加页面，那么在打包的时候一定会报错。后来发现应该在vue里面写add-new模块的功能，在页面实现菜单相关功能会更容易实现些。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2018/02/01/https-theory/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1965,7 +2528,7 @@ date: 2018-01-08 10:49:19
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1976,7 +2539,7 @@ date: 2018-01-08 10:49:19
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1987,7 +2550,7 @@ date: 2018-01-08 10:49:19
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
