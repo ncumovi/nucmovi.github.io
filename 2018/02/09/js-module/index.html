@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Commonjs Node.js采用了这个规范。 根据CommonJS规范，一个单独的文件就是一个模块。模块的输出必须通过module.exports导出对外的变量或接口，加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的exports对象。  在网上看了很多的Commonjs模块的定义，但是去没有说要在node的环境中，否则会报错module is not defin">
+<meta name="description" content="Commonjs规范 Node.js采用了这个规范。 根据CommonJS规范，一个单独的文件就是一个模块。模块的输出必须通过module.exports导出对外的变量或接口，加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的exports对象。  在网上看了很多的Commonjs模块的定义，但是去没有说要在node的环境中，否则会报错module is not def">
 <meta name="keywords" content="js,module,模块,CommonJs,AMD,CMD,ES6,require,import,export">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js模块化">
 <meta property="og:url" content="http://ncumovi.com/2018/02/09/js-module/index.html">
 <meta property="og:site_name" content="Movi Blog">
-<meta property="og:description" content="Commonjs Node.js采用了这个规范。 根据CommonJS规范，一个单独的文件就是一个模块。模块的输出必须通过module.exports导出对外的变量或接口，加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的exports对象。  在网上看了很多的Commonjs模块的定义，但是去没有说要在node的环境中，否则会报错module is not defin">
+<meta property="og:description" content="Commonjs规范 Node.js采用了这个规范。 根据CommonJS规范，一个单独的文件就是一个模块。模块的输出必须通过module.exports导出对外的变量或接口，加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的exports对象。  在网上看了很多的Commonjs模块的定义，但是去没有说要在node的环境中，否则会报错module is not def">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-01T07:18:20.653Z">
+<meta property="og:updated_time" content="2019-11-01T14:01:40.179Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js模块化">
-<meta name="twitter:description" content="Commonjs Node.js采用了这个规范。 根据CommonJS规范，一个单独的文件就是一个模块。模块的输出必须通过module.exports导出对外的变量或接口，加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的exports对象。  在网上看了很多的Commonjs模块的定义，但是去没有说要在node的环境中，否则会报错module is not defin">
+<meta name="twitter:description" content="Commonjs规范 Node.js采用了这个规范。 根据CommonJS规范，一个单独的文件就是一个模块。模块的输出必须通过module.exports导出对外的变量或接口，加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的exports对象。  在网上看了很多的Commonjs模块的定义，但是去没有说要在node的环境中，否则会报错module is not def">
 
 
 
@@ -404,19 +404,20 @@
       
 
       
-        <script src="\assets\js\APlayer.min.js"> </script><h2 id="Commonjs"><a href="#Commonjs" class="headerlink" title="Commonjs"></a>Commonjs</h2><ul>
+        <script src="\assets\js\APlayer.min.js"> </script><h2 id="Commonjs规范"><a href="#Commonjs规范" class="headerlink" title="Commonjs规范"></a>Commonjs规范</h2><ul>
 <li><p>Node.js采用了这个规范。 根据CommonJS规范，一个单独的文件就是一个模块。模块的输出必须通过module.exports导出对外的变量或接口，加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的exports对象。</p>
 </li>
 <li><p>在网上看了很多的Commonjs模块的定义，但是去没有说要在node的环境中，否则会报错<strong>module is not defined</strong>。只有在node环境中，每一个node.js执行文件，都自动创建一个module对象，同时，module对象会创建一个叫exports的属性，初始化的值是 {}。而exports是引用 module.exports的值。module.exports 被改变的时候，exports不会被改变，当模块导出的时候，真正导出的执行是module.exports，而不是exports。具体可以参考 <a href="https://www.jianshu.com/p/7b9f84dbb576" target="_blank" rel="noopener">NodeJS中的modu.exports和exports</a></p>
 </li>
 </ul>
 <h4 id="AMD规范"><a href="#AMD规范" class="headerlink" title="AMD规范"></a>AMD规范</h4><ul>
-<li><p>相比服务器端广泛使同步加载的CommonJS规范, AMD（异步模块定义）是为浏览器环境设计的。</p>
+<li><p>相比服务器端广泛使同步加载的CommonJS规范, AMD（异步模块定义）是为浏览器环境设计的，依赖前置。</p>
 </li>
 <li><p>requirejs即为遵循AMD规范的模块化工具。通过define方法，将代码定义为模块，然后再require进来</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//a.js  定义模块</span><br><span class="line">define(<span class="keyword">function</span>(require, exports, module) &#123;</span><br><span class="line">    //  导出模块内容</span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">        a :<span class="string">'movi'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//b.js 加载模块</span><br><span class="line">require([<span class="string">'a'</span>], <span class="keyword">function</span> (a) &#123;</span><br><span class="line">    console.log(a)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<h4 id="CMD规范"><a href="#CMD规范" class="headerlink" title="CMD规范"></a>CMD规范</h4><p>典型的遵循CMD规范的就是sea.js，是同步加载模块，遵循就近加载原则，模块即用即返，不用前置依赖模块。</p>
 <h4 id="CommonJS与AMD"><a href="#CommonJS与AMD" class="headerlink" title="CommonJS与AMD"></a>CommonJS与AMD</h4><p>上面也提到了CommonJS是同步加载模块，也就是说只有加载完成才能执行后续的操作，而AMD是异步加载，允许在回调函数中处理。</p>
 <p>由于Node.js主要用于服务器编程，模块文件一般都已经存在于本地硬盘，所以加载起来比较快，不用考虑非同步加载的方式，所以CommonJS规范比较适用。但是，如果是浏览器环境，要从服务器端加载模块，这时就必须采用非同步模式，因此浏览器端一般采用AMD规范。</p>
 <p>兼容CommonJS规范的AMD模块输出，这时候需要在定义模块的define方法中这样写：</p>
@@ -617,7 +618,7 @@ export function add(num1,num2){
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -628,7 +629,7 @@ export function add(num1,num2){
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -639,7 +640,7 @@ export function add(num1,num2){
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -685,7 +686,7 @@ export function add(num1,num2){
 
 
           <div class='my-music-style'>
-             <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=252563&auto=1&height=66"></iframe>
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=252563&auto=1&height=66"></iframe>
           </div>
 
           
@@ -726,7 +727,7 @@ export function add(num1,num2){
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Commonjs"><span class="nav-number">1.</span> <span class="nav-text">Commonjs</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AMD规范"><span class="nav-number">1.0.1.</span> <span class="nav-text">AMD规范</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CommonJS与AMD"><span class="nav-number">1.0.2.</span> <span class="nav-text">CommonJS与AMD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ES6-Modules"><span class="nav-number">1.0.3.</span> <span class="nav-text">ES6 Modules</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Commonjs规范"><span class="nav-number">1.</span> <span class="nav-text">Commonjs规范</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AMD规范"><span class="nav-number">1.0.1.</span> <span class="nav-text">AMD规范</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CMD规范"><span class="nav-number">1.0.2.</span> <span class="nav-text">CMD规范</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CommonJS与AMD"><span class="nav-number">1.0.3.</span> <span class="nav-text">CommonJS与AMD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ES6-Modules"><span class="nav-number">1.0.4.</span> <span class="nav-text">ES6 Modules</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

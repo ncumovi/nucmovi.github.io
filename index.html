@@ -272,6 +272,503 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2019/11/01/jQuery-core/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MoviLee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/movi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Movi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/01/jQuery-core/" itemprop="url">jQuery核心功能函数揭秘</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-01T21:42:19+08:00">
+                2019-11-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/源码分析/" itemprop="url" rel="index">
+                    <span itemprop="name">源码分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2019/11/01/jQuery-core/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::http://ncumovi.com/2019/11/01/jQuery-core/" class="cy_cmt_count" data-xid="2019/11/01/jQuery-core/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                   字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                   分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="\assets\js\APlayer.min.js"> </script><h4 id="jQuery无new化构建"><a href="#jQuery无new化构建" class="headerlink" title="jQuery无new化构建"></a>jQuery无new化构建</h4><pre><code>我们平时使用jQuery的时候使用的$,然后就会返回一个jQuery的实例，如何做到在调用的时候不使用new也可以得到jQuery的实例呢
+
+(function(global){
+
+    //类型校验 防错处理
+    if(typeof type!=&apos;string&apos;){
+        throw new Error(&apos;type must be a string&apos;);
+    }
+
+    var jQuery = function (){
+        //返回jQuery原型对象上init对象的实例 不可直接返回new jQuery(),否则在创建自身实例的时候执行jQuery构造函数，重复执行陷入死循环
+        return new jQuery.prototype.init();
+    }
+
+    //jQuery原型对象别名fn
+    jQuery.fn = jQuery.prototype = {
+        init: function(){
+
+        },
+
+        css:function(){
+
+        }
+    }
+
+    //让jQuery和init共享原型 让$返回的对象享有jQuery原型上的所有方法
+    jQuery.fn.init.prototype = jQuery.fn;
+
+
+    global.$ =  global.jQuery = jQuery;
+
+})(this)
+</code></pre><h4 id="共享原型设计："><a href="#共享原型设计：" class="headerlink" title="共享原型设计："></a>共享原型设计：</h4><p>共享原型设计的核心在于创建jQuery实例的时候，构造函数里面返回的是另一个和jQuery共享原型对象的init构造方法的实例</p>
+<pre><code>...
+var jQuery = function (){
+    //返回jQuery原型对象上init对象的实例 不可直接返回new jQuery(),否则在创建自身实例的时候执行jQuery构造函数，重复执行陷入死循环
+    return jQuery.prototype.init();
+}
+...
+//让jQuery和init共享原型 让$返回的实例对象享有jQuery原型上的所有方法
+jQuery.prototype.init.prototype = jQuery.prototype;
+...
+</code></pre><h4 id="核心函数extend"><a href="#核心函数extend" class="headerlink" title="核心函数extend"></a>核心函数extend</h4><pre><code>...
+//extend
+jQuery.fn.extend = jQuery.extend = function(){
+    var target = arguments[0] || {};
+    var length = arguments.length;
+    var i = 1;
+    var deep = false;
+    var options, name, copy, src, copyIsArray, clone;
+
+    //如果传的第一个值是boolean值 则说明是深拷贝 
+    if(typeof target === &apos;boolean&apos;){
+        deep = target;
+        target = arguments[1];
+    }
+
+    //扩展的第一个对象不是对象的时候 创建空对象复制给他
+    if(typeof target != &apos;object&apos;){
+        target = {};
+    }
+    //参数的个数 如果只有一个则需要拿到当前调用对象 jQuery或者jQuery实例
+    if(length === i){ //本身扩展
+        target = this; //指向本身
+        //把下标变成0，这样就可以在扩展自己本身的时候拿到需要扩展进去的对象   {name:&apos;movi&apos;}
+        //$.extend({name:&apos;movi&apos;})
+        i--;
+    }
+
+    //浅拷贝
+    for(; i &lt;length; i++){
+        if((options = arguments[i]) != null){
+            //options 代表要扩展的对象 {name:&apos;max&apos; ,list:{age:&apos;20&apos;}}    $.extend({}, {name:&apos;max&apos;,list:{age:&apos;20&apos;}}); 
+            for(name in options){
+                copy = options[name]; // name:&apos;max&apos;  list:{age:&apos;20&apos;}
+                src = target[name]; // undefined
+                //如果是深拷贝 则需要判断当前要扩展的对象是数组或者是对象
+                if(deep &amp;&amp; (jQuery.isPlainObject(copy) || (copyIsArray = jQuery.isArray(copy)))){
+                    if(copyIsArray){
+                        //被扩展的源对象本身不是数组或者没有就创建空数组给他，否则就是自己本身
+                        copyIsArray = false; //需要重置 保证每次循环都是最新值
+                        clone = src &amp;&amp; jQuery.isArray(src) ? src : [];
+                    }else{
+                         //被扩展的源对象本身不是对象或者没有 就创建空对象给他
+                        clone = src &amp;&amp; jQuery.isPlainObject(src) ? src : {};
+                    }
+                    target[name] = jQuery.extend(deep, clone, copy)
+                }else if(copy != undefined){ 
+                    target[name] = copy;
+                }
+
+            }
+        }
+    }
+
+    return target;
+}
+...
+</code></pre><h4 id="提取标签元素名-并创建dom"><a href="#提取标签元素名-并创建dom" class="headerlink" title="提取标签元素名 并创建dom"></a>提取标签元素名 并创建dom</h4><pre><code>//用正则捕获标签内的元素名字 &apos;&lt;a&gt;&apos; =&gt; &apos;a&apos;
+var  rejectExp = /^&lt;(\w+)\s*\/?&gt;(?:&lt;\/\1&gt;|)$/;
+...
+//将标签解析为具体的元素名 然后创建该dom对象
+parseHtml: function(selector, context){
+    if(!selector || typeof selector != &apos;string&apos;){
+        return null
+    }
+    //过滤掉尖括号 获得元素名字 &apos;&lt;a&gt;&apos; =&gt; &apos;a&apos;
+    var parse = rejectExp.exec(selector); //[&lt;p&gt;, p]
+    //创建dom
+    return [context.createElement(parse[1])];
+}
+</code></pre><h4 id="merge合并数组到对象"><a href="#merge合并数组到对象" class="headerlink" title="merge合并数组到对象"></a>merge合并数组到对象</h4><pre><code>//将数组或者类数组对象和并到this即jQuery实例对象上
+merge: function(first, second){
+    var l = first.length;
+    var j = second.length;
+    var i = 0;
+    //如果传进来的第二个参数具有length属性 则遍历second数组 将值赋给first对象 下班从first length++开始
+    if(typeof j === &apos;number&apos;){
+        for(i; i &lt; j; i++){
+            first[l++] = second[i];
+        }
+    }else{
+        //如果second是类数组 不具备length属性 则直接用while循环 将second每一项值赋给second
+        while(second[i] != undefined){
+            first[l++] = second[i++];
+        }
+    }
+    //这里将自增以后的l值作为传进来first的length属性值
+    first.length = l;
+    return first;
+},
+</code></pre><h4 id="jQuery初始化方法init-创建dom或者查询dom"><a href="#jQuery初始化方法init-创建dom或者查询dom" class="headerlink" title="jQuery初始化方法init 创建dom或者查询dom"></a>jQuery初始化方法init 创建dom或者查询dom</h4><pre><code>init: function(selector, context){
+    context = context || document;
+    var match;
+    //如果没有传selctor值 则返回当前jQuery实例对象
+    if(!selector){
+        return this;
+    }
+    if(typeof selector === &apos;string&apos;){
+        //如果传进来的是字符串 且是类似&quot;&lt;a&gt;&quot;这种带标签的 则表示创建dom节点
+        if(selector.charAt(0) === &apos;&lt;&apos; &amp;&amp; selector.charAt(selector.length-1) === &apos;&gt;&apos; &amp;&amp; selector.length === 3){
+            match = [selector];
+        }
+        if(match){
+            //创建dom
+            //将创建的dom对象数组 [dom] 与当前jQuery实例合并在一起
+            jQuery.merge(this, jQuery.parseHtml(selector, context));
+        }else{
+            //查询dom 使用querySelectorAll api查询到所有的dom节点
+            var ele = document.querySelectorAll(selector);
+            //将查询到的dom类数组对象转换为数组对象 并遍历dom数组对象 将他们挂载到jQuery实例对象上
+            var eles = Array.prototype.slice.call(ele);
+            var len = eles.length;
+            for(var i = 0; i &lt; len; i++){
+                this[i] = eles[i];
+            }
+            this.selector = selector;
+            this.context = context;
+            this.length = len;
+        }
+    }else if(selector.nodeType){
+        //传过来的是对象且具有nodeType属性 则把当前对象作为当前实例对象的context
+        this.context = this[0] = selector;
+        this.length = 1;
+    }
+}
+</code></pre><h4 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h4><pre><code>(function(global){
+    //正则捕获标签内的元素名字
+    var  rejectExp = /^&lt;(\w+)\s*\/?&gt;(?:&lt;\/\1&gt;|)$/;
+
+    var jQuery = function (selector, context){
+        //返回jQuery原型对象上init对象的实例
+        return new jQuery.prototype.init(selector, context);
+    }
+
+    jQuery.fn = jQuery.prototype = {
+        length:0,
+        selector:&apos;&apos;,
+        init: function(selector, context){
+            context = context || document;
+            var match;
+            //如果没有传selctor值 则返回当前jQuery实例对象
+            if(!selector){
+                return this;
+            }
+            if(typeof selector === &apos;string&apos;){
+                //如果传进来的是字符串 且是类似&quot;&lt;a&gt;&quot;这种带标签的 则表示创建dom节点
+                if(selector.charAt(0) === &apos;&lt;&apos; &amp;&amp; selector.charAt(selector.length-1) === &apos;&gt;&apos; &amp;&amp; selector.length === 3){
+                    match = [selector];
+                }
+                if(match){
+                    //创建dom
+                    //将创建的dom对象数组 [dom] 与当前jQuery实例合并在一起
+                    jQuery.merge(this, jQuery.parseHtml(selector, context));
+                }else{
+                    //查询dom 使用querySelectorAll api查询到所有的dom节点
+                    var ele = document.querySelectorAll(selector);
+                    //将查询到的dom类数组对象转换为数组对象 并遍历dom数组对象 将他们挂载到jQuery实例对象上
+                    var eles = Array.prototype.slice.call(ele);
+                    var len = eles.length;
+                    for(var i = 0; i &lt; len; i++){
+                        this[i] = eles[i];
+                    }
+                    this.selector = selector;
+                    this.context = context;
+                    this.length = len;
+                }
+            }else if(selector.nodeType){
+                //传过来的是对象且具有nodeType属性 则把当前对象作为当前实例对象的context
+                this.context = this[0] = selector;
+                this.length = 1;
+            }
+        }
+    }
+
+    //extend
+    jQuery.fn.extend = jQuery.extend = function(){
+        var target = arguments[0] || {};
+        var length = arguments.length;
+        var i = 1;
+        var deep = false;
+        var options, name, copy, src, copyIsArray, clone;
+
+        if(typeof target === &apos;boolean&apos;){
+            deep = target;
+            target = arguments[1];
+        }
+
+        //扩展的第一个对象不是对象的时候 创建空对象复制给他
+        if(typeof target != &apos;object&apos;){
+            target = {};
+        }
+        //参数的个数 如果只有一个则需要拿到当前调用对象 jQuery或者jQuery实例
+        if(length === i){ //本身扩展
+            target = this; //指向本身
+            //把下标变成0，这样就可以在扩展自己本身的时候拿到需要扩展进去的对象   {name:&apos;movi&apos;}
+            //$.extend({name:&apos;movi&apos;})
+            i--;
+        }
+
+        //浅拷贝
+        for(; i &lt;length; i++){
+            if((options = arguments[i]) != null){
+                //options 代表要扩展的对象 {name:&apos;max&apos; ,list:{age:&apos;20&apos;}}    $.extend({}, {name:&apos;max&apos;,list:{age:&apos;20&apos;}}); 
+                for(name in options){
+                    copy = options[name]; // name:&apos;max&apos;  list:{age:&apos;20&apos;}
+                    src = target[name]; // undefined
+                    //如果是深拷贝 则需要判断当前要扩展的对象是数组或者是对象
+                    if(deep &amp;&amp; (jQuery.isPlainObject(copy) || (copyIsArray = jQuery.isArray(copy)))){
+                        if(copyIsArray){
+                            //被扩展的源对象本身不是数组或者没有就创建空数组给他，否则就是自己本身
+                            copyIsArray = false; //需要重置 保证每次循环都是最新值
+                            clone = src &amp;&amp; jQuery.isArray(src) ? src : [];
+                        }else{
+                            //被扩展的源对象本身不是对象或者没有 就创建空对象给他
+                            clone = src &amp;&amp; jQuery.isPlainObject(src) ? src : {};
+                        }
+                        target[name] = jQuery.extend(deep, clone, copy)
+                    }else if(copy != undefined){ 
+                        target[name] = copy;
+                    }
+
+                }
+            }
+        }
+
+        return target;
+    }
+
+    //让jQuery和init共享原型 让$返回的对象享有jQuery原型上的所有方法
+    jQuery.fn.init.prototype = jQuery.fn;
+
+    jQuery.extend({
+        //给jQuery本身扩展类型检测的方法
+        isPlainObject: function(obj){
+            return toString.call(obj) === &apos;[object Object]&apos;;
+        },
+        isArray: function(obj){
+            return toString.call(obj) === &apos;[object Array]&apos;;
+        },
+        //将数组或者类数组对象和并到this即jQuery实例对象上
+        merge: function(first, second){
+            var l = first.length;
+            var j = second.length;
+            var i = 0;
+            //如果传进来的第二个参数具有length属性 则遍历second数组 将值赋给first对象 下班从first length++开始
+            if(typeof j === &apos;number&apos;){
+                for(i; i &lt; j; i++){
+                    first[l++] = second[i];
+                }
+            }else{
+                //如果second是类数组 不具备length属性 则直接用while循环 将second每一项值赋给second
+                while(second[i] != undefined){
+                    first[l++] = second[i++];
+                }
+            }
+            //这里将自增以后的l值作为传进来first的length属性值
+            first.length = l;
+            return first;
+        },
+        //将标签解析为具体的元素名 然后创建该dom对象
+        parseHtml: function(selector, context){
+            if(!selector || typeof selector != &apos;string&apos;){
+                return null
+            }
+            //过滤掉尖括号 获得元素名字 &apos;&lt;a&gt;&apos; =&gt; &apos;a&apos;
+            var parse = rejectExp.exec(selector); //[&lt;p&gt;, p]
+            return [context.createElement(parse[1])];
+        }
+
+    }) 
+
+    global.$ =  global.jQuery = jQuery;
+})(this)    
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2019/10/14/design-philosophy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2451,198 +2948,11 @@ mysql -u test -p;
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2018/07/01/add-react-to-vue/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="MoviLee">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/movi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Movi Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/01/add-react-to-vue/" itemprop="url">在现有Vue项目中引入React</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-01T15:24:19+08:00">
-                2018-07-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2018/07/01/add-react-to-vue/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::http://ncumovi.com/2018/07/01/add-react-to-vue/" class="cy_cmt_count" data-xid="2018/07/01/add-react-to-vue/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                   字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                   分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="\assets\js\APlayer.min.js"> </script><h2 id="安装相应依赖以及转码打包的工具"><a href="#安装相应依赖以及转码打包的工具" class="headerlink" title="安装相应依赖以及转码打包的工具"></a>安装相应依赖以及转码打包的工具</h2><p>运行以下代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install  --save-dev react react-dom babel-cli babel-preset-react</span><br></pre></td></tr></table></figure></p>
-<p>将依赖写入package.json文件中，如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"react"</span>: <span class="string">"^16.4.1"</span>,</span><br><span class="line"><span class="string">"react-dom"</span>: <span class="string">"^16.4.1"</span>,</span><br><span class="line"><span class="string">"babel-cli"</span>: <span class="string">"^6.26.0"</span>,</span><br><span class="line"><span class="string">"babel-preset-react"</span>: <span class="string">"^6.24.1"</span>,</span><br></pre></td></tr></table></figure></p>
-<h2 id="修改-babelrc文件如下："><a href="#修改-babelrc文件如下：" class="headerlink" title="修改.babelrc文件如下："></a>修改<strong>.babelrc</strong>文件如下：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"presets"</span>: [</span><br><span class="line">    [<span class="string">"env"</span>, &#123;</span><br><span class="line">      <span class="string">"modules"</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="string">"targets"</span>: &#123;</span><br><span class="line">        <span class="string">"browsers"</span>: [<span class="string">"&gt; 1%"</span>, <span class="string">"last 2 versions"</span>, <span class="string">"not ie &lt;= 8"</span>]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">"stage-2"</span>,</span><br><span class="line">    <span class="string">"react"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"plugins"</span>: [<span class="string">"transform-runtime"</span>],</span><br><span class="line">  <span class="string">"comments"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="string">"env"</span>: &#123;</span><br><span class="line">    <span class="string">"test"</span>: &#123;</span><br><span class="line">      <span class="string">"presets"</span>: [<span class="string">"env"</span>, <span class="string">"stage-2"</span>,<span class="string">"react"</span>],</span><br><span class="line">      <span class="string">"plugins"</span>: [ <span class="string">"istanbul"</span> ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="最后在Vue文件中引入react相应组件"><a href="#最后在Vue文件中引入react相应组件" class="headerlink" title="最后在Vue文件中引入react相应组件"></a>最后在Vue文件中引入react相应组件</h2><pre><code>import xx.js from ./xx
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2692,7 +3002,7 @@ mysql -u test -p;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2703,7 +3013,7 @@ mysql -u test -p;
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2714,7 +3024,7 @@ mysql -u test -p;
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2760,7 +3070,7 @@ mysql -u test -p;
 
 
           <div class='my-music-style'>
-             <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=252563&auto=1&height=66"></iframe>
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=252563&auto=1&height=66"></iframe>
           </div>
 
           
