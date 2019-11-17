@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="ideal,tomcat,marven," />
+  <meta name="keywords" content="jQuery,callback," />
 
 
 
@@ -79,24 +79,18 @@
 
 
 
-<meta name="description" content="前情提要此前写过一篇《ideal启动tomcat》的博客，这篇文章建立在此基础之上，这里只讲述差异之处，相同之处不再赘述，为方便阐述，接下来我会将《ideal启动tomcat》这篇文章简称为上篇文章。 marven插件依赖选择这里区别上篇文章所提到的libraries的配置。因为这里用的是marven插件库，故不用选择libraies，可以按照如下操作： 1、建立在我们打开项目的基础之上，选择左">
-<meta name="keywords" content="ideal,tomcat,marven">
+<meta name="description" content="jQuery内部核心函数callback$.callback可以通过add添加回调函数，fire执行回调函数。初始化创建callback实例的时候，可以传递三个参数的组合，stopOnfalse表示如果其中一个回调函数的返回值是false,则后续的回调函数不再执行；once表示只执行一次，即add进去的回调函数只会在第一次fire的时候会执行，如果后面再继续调用fire,回调函数不会再执行；me">
+<meta name="keywords" content="jQuery,callback">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ideal启动tomcat(依赖marven插件)">
-<meta property="og:url" content="http://ncumovi.com/2019/10/12/ideal-tomcat-marven/index.html">
+<meta property="og:title" content="jQuery核心功能函数之callback">
+<meta property="og:url" content="http://ncumovi.com/2019/11/17/jQuery-callback/index.html">
 <meta property="og:site_name" content="Movi Blog">
-<meta property="og:description" content="前情提要此前写过一篇《ideal启动tomcat》的博客，这篇文章建立在此基础之上，这里只讲述差异之处，相同之处不再赘述，为方便阐述，接下来我会将《ideal启动tomcat》这篇文章简称为上篇文章。 marven插件依赖选择这里区别上篇文章所提到的libraries的配置。因为这里用的是marven插件库，故不用选择libraies，可以按照如下操作： 1、建立在我们打开项目的基础之上，选择左">
+<meta property="og:description" content="jQuery内部核心函数callback$.callback可以通过add添加回调函数，fire执行回调函数。初始化创建callback实例的时候，可以传递三个参数的组合，stopOnfalse表示如果其中一个回调函数的返回值是false,则后续的回调函数不再执行；once表示只执行一次，即add进去的回调函数只会在第一次fire的时候会执行，如果后面再继续调用fire,回调函数不会再执行；me">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ncumovi.com/img/ideal-tomcat-marven/select_marven1.png">
-<meta property="og:image" content="http://ncumovi.com/img/ideal-tomcat-marven/select_marven2.png">
-<meta property="og:image" content="http://ncumovi.com/img/ideal-tomcat-marven/select_pom1.png">
-<meta property="og:image" content="http://ncumovi.com/img/ideal-tomcat-marven/select_pom2.png">
-<meta property="og:image" content="http://ncumovi.com/img/ideal-tomcat-marven/set_tomcat.png">
-<meta property="og:updated_time" content="2019-10-12T05:00:22.210Z">
+<meta property="og:updated_time" content="2019-11-17T09:40:22.494Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ideal启动tomcat(依赖marven插件)">
-<meta name="twitter:description" content="前情提要此前写过一篇《ideal启动tomcat》的博客，这篇文章建立在此基础之上，这里只讲述差异之处，相同之处不再赘述，为方便阐述，接下来我会将《ideal启动tomcat》这篇文章简称为上篇文章。 marven插件依赖选择这里区别上篇文章所提到的libraries的配置。因为这里用的是marven插件库，故不用选择libraies，可以按照如下操作： 1、建立在我们打开项目的基础之上，选择左">
-<meta name="twitter:image" content="http://ncumovi.com/img/ideal-tomcat-marven/select_marven1.png">
+<meta name="twitter:title" content="jQuery核心功能函数之callback">
+<meta name="twitter:description" content="jQuery内部核心函数callback$.callback可以通过add添加回调函数，fire执行回调函数。初始化创建callback实例的时候，可以传递三个参数的组合，stopOnfalse表示如果其中一个回调函数的返回值是false,则后续的回调函数不再执行；once表示只执行一次，即add进去的回调函数只会在第一次fire的时候会执行，如果后面再继续调用fire,回调函数不会再执行；me">
 
 
 
@@ -126,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://ncumovi.com/2019/10/12/ideal-tomcat-marven/"/>
+  <link rel="canonical" href="http://ncumovi.com/2019/11/17/jQuery-callback/"/>
 
 
 
 
 
-  <title>ideal启动tomcat(依赖marven插件) | Movi Blog</title>
+  <title>jQuery核心功能函数之callback | Movi Blog</title>
   
 
 
@@ -279,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2019/10/12/ideal-tomcat-marven/">
+    <link itemprop="mainEntityOfPage" href="http://ncumovi.com/2019/11/17/jQuery-callback/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="MoviLee">
@@ -296,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ideal启动tomcat(依赖marven插件)</h1>
+          <h1 class="post-title" itemprop="name headline">jQuery核心功能函数之callback</h1>
         
 
         <div class="post-meta">
@@ -308,8 +302,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-12T11:45:19+08:00">
-                2019-10-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-17T17:21:19+08:00">
+                2019-11-17
               </time>
             
 
@@ -331,8 +325,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
+                  <a href="/categories/源码分析/" itemprop="url" rel="index">
+                    <span itemprop="name">源码分析</span>
                   </a>
                 </span>
 
@@ -350,8 +344,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2019/10/12/ideal-tomcat-marven/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/10/12/ideal-tomcat-marven/" itemprop="commentsCount"></span>
+                <a href="/2019/11/17/jQuery-callback/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/11/17/jQuery-callback/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -410,17 +404,130 @@
       
 
       
-        <script src="\assets\js\APlayer.min.js"> </script><h4 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h4><p>此前写过一篇<a href="https://ncumovi.github.io/2018/11/09/ideal-tomcat/" target="_blank" rel="noopener">《ideal启动tomcat》</a>的博客，这篇文章建立在此基础之上，这里只讲述差异之处，相同之处不再赘述，为方便阐述，接下来我会将《ideal启动tomcat》这篇文章简称为上篇文章。</p>
-<h4 id="marven插件依赖选择"><a href="#marven插件依赖选择" class="headerlink" title="marven插件依赖选择"></a>marven插件依赖选择</h4><p>这里区别上篇文章所提到的libraries的配置。因为这里用的是marven插件库，故不用选择libraies，可以按照如下操作：</p>
-<p>1、建立在我们打开项目的基础之上，选择左上角file下面的setting,找到build Tools选项，选择右侧的marven,然后选择覆盖marven设置文件和仓库文件夹，这里默认的是远程仓库，我们要替换掉user setting file 和 local respository。这里简要说明一下，settingFile是marven设置文件，里面有远程仓库的账户和密码，有这个文件我们才能下载依赖，local respository这个文件夹是用来放下载下来的依赖的。</p>
-<p><img src="/img/ideal-tomcat-marven/select_marven1.png" alt="选择marven1"></p>
-<p><img src="/img/ideal-tomcat-marven/select_marven2.png" alt="选择marven2"></p>
-<p>2、我们需要在编辑器的右侧选择<strong>marven</strong> ，然后点击 <strong> + </strong>，选择后台代码<strong>atom</strong>下面的<strong>pom.xml</strong>文件。</p>
-<p><img src="/img/ideal-tomcat-marven/select_pom1.png" alt="选择pom1"></p>
-<p>点击刷新按钮开始下载插件</p>
-<p><img src="/img/ideal-tomcat-marven/select_pom2.png" alt="选择pom2"></p>
-<h2 id="配置tomcat"><a href="#配置tomcat" class="headerlink" title="配置tomcat"></a>配置tomcat</h2><p>这里的配置和上篇文章提到的配置是一样的，只对下图这个选项做个解释，这里表示是否有具有更新功能，默认是重新启动服务，但是我们有时候修改个别class不需要重启服务，所以选择更新资源，重新编译，避免时间的浪费。<br><img src="/img/ideal-tomcat-marven/set_tomcat.png" alt="选择p配置tomcatom"></p>
+        <script src="\assets\js\APlayer.min.js"> </script><h4 id="jQuery内部核心函数callback"><a href="#jQuery内部核心函数callback" class="headerlink" title="jQuery内部核心函数callback"></a>jQuery内部核心函数callback</h4><p>$.callback可以通过add添加回调函数，fire执行回调函数。初始化创建callback实例的时候，可以传递三个参数的组合，stopOnfalse表示如果其中一个回调函数的返回值是false,则后续的回调函数不再执行；once表示只执行一次，即add进去的回调函数只会在第一次fire的时候会执行，如果后面再继续调用fire,回调函数不会再执行；memory表示再调用fire函数以后，后面再继续调用add添加函数的时候，该回调函数会立即执行，且之前执行过的回调不会再被执行，以下是代码的完整简易实现，要点以及个人理解都在代码注释里面。</p>
+<pre><code>var cb = $.callbacks(&apos;stopOnfalse once memory&apos;);
 
+cb.add(function(){
+    console.log(1)
+    return false
+}, function(){
+    console.log(2)
+});
+
+cb.add(function(){
+    console.log(5)
+});
+
+cb.fire();
+
+cb.add(function(){
+    console.log(&apos;3&apos;)
+})
+</code></pre><h4 id="callback之once"><a href="#callback之once" class="headerlink" title="callback之once"></a>callback之once</h4><pre><code>var cb = $.callbacks(&apos;once&apos;);
+
+cb.add(function(){
+    console.log(1)
+});
+
+cb.fire(); //输出1
+cb.fire(); //没有输出
+</code></pre><h4 id="callback之stopOnfalse"><a href="#callback之stopOnfalse" class="headerlink" title="callback之stopOnfalse"></a>callback之stopOnfalse</h4><pre><code>var cb = $.callbacks(&apos;once&apos;);
+
+cb.add(function(){
+    console.log(1)
+    return false
+}, function(){
+    console.log(2)
+});
+
+cb.fire(); //输出1 
+</code></pre><h4 id="callback之memory"><a href="#callback之memory" class="headerlink" title="callback之memory"></a>callback之memory</h4><pre><code>var cb = $.callbacks(&apos;stopOnfalse once memory&apos;);
+
+cb.add(function(){
+    console.log(1)
+});
+
+cb.add(function(){
+    console.log(5)
+});
+
+cb.fire(); //输出1和5
+
+//会立即执行
+cb.add(function(){
+    console.log(3)
+})
+</code></pre><p>以上会分别输出1，5，3</p>
+<h4 id="callback完整代码的简易实现"><a href="#callback完整代码的简易实现" class="headerlink" title="callback完整代码的简易实现"></a>callback完整代码的简易实现</h4><pre><code>...
+callbacks: function(option){
+    //回调函数列表 
+    var list = [],
+    //执行回调函数的下标 默认从第一个开始
+        index,
+    //手动设置执行回调函数列表的下标    
+        start,
+    //回调函数列表的长度
+        listLength,
+    //回调函数是否执行过
+        hasRun;
+    //当前回调队列策略 参数 once stopOnfalse memory
+    option = typeof option === &apos;string&apos; ? (optionCach[option] || createOptionCach(option)) : {};
+    //当传进来的参数、模式不在缓存对象里面时候 需要重新创建
+    function createOptionCach(option){
+        //将空对象、缓存对象的对象引用给obj 并返回
+        var obj = optionCach[option] = {};
+        option.split(/\s+/).forEach(function(opt){
+            obj[opt] = true;
+        });
+        return obj;
+    }
+    //循环执行回调函数列表里面的回调函数
+    var fire = function(data){
+        index = start || 0;
+        hasRun = true;
+        for(index; index &lt; list.length; index++){
+            //如果回调函数的返回值是false 同时又配置了stopOnfalse的时候就跳出循环
+            if(list[index].call(data[0], data[1]) == false &amp;&amp; option.stopOnfalse){
+                break;
+            };
+        }
+    }
+    var self = {
+        add:function(){
+            var args = Array.prototype.slice.call(arguments);
+            //每次添加回调函数的时候 记录当前回调函数列表的长度
+            listLength = list.length;
+            //循环遍历args将add进来的回调函数全部放到事件列表list
+            args.forEach(function(fn){
+                //如果传进来的参数是函数对象 则添加到回调函数列表
+                if(toString.call(fn) === &apos;[object Function]&apos;){
+                    list.push(fn);
+                }
+            })
+            //当配置的memory的同时回调函数还没执行过 则将下次执行回调函数的下标置为当前事件列表的长度 避免执行的时候重复执行
+            if(option.memory &amp;&amp; hasRun){
+                start = listLength;
+                self.fire(arguments);
+            }
+
+        },
+        fireWith:function(context, arg){
+            var args = [context, arg];
+            //如果是配置了只执行一次 或者还没执行过才执行
+            if(!option.once || !hasRun){
+                fire(args)
+            }
+
+        },
+        fire:function(){
+            //把当前jQuery实例对象以及传递的参数通过fireWith传递
+            self.fireWith(this, arguments);
+        }
+    }
+    //这里返回self以实现链式调用
+    return self;
+}
+</code></pre>
       
     </div>
     
@@ -466,11 +573,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ideal/" rel="tag"># ideal</a>
+            <a href="/tags/jQuery/" rel="tag"># jQuery</a>
           
-            <a href="/tags/tomcat/" rel="tag"># tomcat</a>
-          
-            <a href="/tags/marven/" rel="tag"># marven</a>
+            <a href="/tags/callback/" rel="tag"># callback</a>
           
         </div>
       
@@ -483,8 +588,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/05/vue-component-js/" rel="next" title="如何用js调用组件">
-                <i class="fa fa-chevron-left"></i> 如何用js调用组件
+              <a href="/2019/11/01/jQuery-core/" rel="next" title="jQuery核心功能函数揭秘">
+                <i class="fa fa-chevron-left"></i> jQuery核心功能函数揭秘
               </a>
             
           </div>
@@ -492,10 +597,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/14/design-model/" rel="prev" title="JS设计模式">
-                JS设计模式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -690,7 +791,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前情提要"><span class="nav-number">1.</span> <span class="nav-text">前情提要</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#marven插件依赖选择"><span class="nav-number">2.</span> <span class="nav-text">marven插件依赖选择</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置tomcat"><span class="nav-number"></span> <span class="nav-text">配置tomcat</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#jQuery内部核心函数callback"><span class="nav-number">1.</span> <span class="nav-text">jQuery内部核心函数callback</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#callback之once"><span class="nav-number">2.</span> <span class="nav-text">callback之once</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#callback之stopOnfalse"><span class="nav-number">3.</span> <span class="nav-text">callback之stopOnfalse</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#callback之memory"><span class="nav-number">4.</span> <span class="nav-text">callback之memory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#callback完整代码的简易实现"><span class="nav-number">5.</span> <span class="nav-text">callback完整代码的简易实现</span></a></li></ol></div>
             
 
           </div>
