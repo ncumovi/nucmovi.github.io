@@ -87,16 +87,16 @@
 <meta property="og:site_name" content="Movi Blog">
 <meta property="og:description" content="前情提要此前写过一篇《ideal启动tomcat》的博客，这篇文章建立在此基础之上，这里只讲述差异之处，相同之处不再赘述，为方便阐述，接下来我会将《ideal启动tomcat》这篇文章简称为上篇文章。 marven插件依赖选择这里区别上篇文章所提到的libraries的配置。因为这里用的是marven插件库，故不用选择libraies，可以按照如下操作： 1、建立在我们打开项目的基础之上，选择左">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ncumovi.com/img/ideal-tomcat-marven/select_marven1.png">
-<meta property="og:image" content="http://ncumovi.com/img/ideal-tomcat-marven/select_marven2.png">
-<meta property="og:image" content="http://ncumovi.com/img/ideal-tomcat-marven/select_pom1.png">
-<meta property="og:image" content="http://ncumovi.com/img/ideal-tomcat-marven/select_pom2.png">
-<meta property="og:image" content="http://ncumovi.com/img/ideal-tomcat-marven/set_tomcat.png">
-<meta property="og:updated_time" content="2019-10-12T05:00:22.210Z">
+<meta property="og:image" content="http://ncumovi.com/blog/img/ideal-tomcat-marven/select_marven1.png">
+<meta property="og:image" content="http://ncumovi.com/blog/img/ideal-tomcat-marven/select_marven2.png">
+<meta property="og:image" content="http://ncumovi.com/blog/img/ideal-tomcat-marven/select_pom1.png">
+<meta property="og:image" content="http://ncumovi.com/blog/img/ideal-tomcat-marven/select_pom2.png">
+<meta property="og:image" content="http://ncumovi.com/blog/img/ideal-tomcat-marven/set_tomcat.png">
+<meta property="og:updated_time" content="2020-03-29T14:49:33.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ideal启动tomcat(依赖marven插件)">
 <meta name="twitter:description" content="前情提要此前写过一篇《ideal启动tomcat》的博客，这篇文章建立在此基础之上，这里只讲述差异之处，相同之处不再赘述，为方便阐述，接下来我会将《ideal启动tomcat》这篇文章简称为上篇文章。 marven插件依赖选择这里区别上篇文章所提到的libraries的配置。因为这里用的是marven插件库，故不用选择libraies，可以按照如下操作： 1、建立在我们打开项目的基础之上，选择左">
-<meta name="twitter:image" content="http://ncumovi.com/img/ideal-tomcat-marven/select_marven1.png">
+<meta name="twitter:image" content="http://ncumovi.com/blog/img/ideal-tomcat-marven/select_marven1.png">
 
 
 
@@ -413,13 +413,13 @@
         <script src="\assets\js\APlayer.min.js"> </script><h4 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h4><p>此前写过一篇<a href="https://ncumovi.github.io/2018/11/09/ideal-tomcat/" target="_blank" rel="noopener">《ideal启动tomcat》</a>的博客，这篇文章建立在此基础之上，这里只讲述差异之处，相同之处不再赘述，为方便阐述，接下来我会将《ideal启动tomcat》这篇文章简称为上篇文章。</p>
 <h4 id="marven插件依赖选择"><a href="#marven插件依赖选择" class="headerlink" title="marven插件依赖选择"></a>marven插件依赖选择</h4><p>这里区别上篇文章所提到的libraries的配置。因为这里用的是marven插件库，故不用选择libraies，可以按照如下操作：</p>
 <p>1、建立在我们打开项目的基础之上，选择左上角file下面的setting,找到build Tools选项，选择右侧的marven,然后选择覆盖marven设置文件和仓库文件夹，这里默认的是远程仓库，我们要替换掉user setting file 和 local respository。这里简要说明一下，settingFile是marven设置文件，里面有远程仓库的账户和密码，有这个文件我们才能下载依赖，local respository这个文件夹是用来放下载下来的依赖的。</p>
-<p><img src="/img/ideal-tomcat-marven/select_marven1.png" alt="选择marven1"></p>
-<p><img src="/img/ideal-tomcat-marven/select_marven2.png" alt="选择marven2"></p>
+<p><img src="/blog/img/ideal-tomcat-marven/select_marven1.png" alt="选择marven1"></p>
+<p><img src="/blog/img/ideal-tomcat-marven/select_marven2.png" alt="选择marven2"></p>
 <p>2、我们需要在编辑器的右侧选择<strong>marven</strong> ，然后点击 <strong> + </strong>，选择后台代码<strong>atom</strong>下面的<strong>pom.xml</strong>文件。</p>
-<p><img src="/img/ideal-tomcat-marven/select_pom1.png" alt="选择pom1"></p>
+<p><img src="/blog/img/ideal-tomcat-marven/select_pom1.png" alt="选择pom1"></p>
 <p>点击刷新按钮开始下载插件</p>
-<p><img src="/img/ideal-tomcat-marven/select_pom2.png" alt="选择pom2"></p>
-<h2 id="配置tomcat"><a href="#配置tomcat" class="headerlink" title="配置tomcat"></a>配置tomcat</h2><p>这里的配置和上篇文章提到的配置是一样的，只对下图这个选项做个解释，这里表示是否有具有更新功能，默认是重新启动服务，但是我们有时候修改个别class不需要重启服务，所以选择更新资源，重新编译，避免时间的浪费。<br><img src="/img/ideal-tomcat-marven/set_tomcat.png" alt="选择p配置tomcatom"></p>
+<p><img src="/blog/img/ideal-tomcat-marven/select_pom2.png" alt="选择pom2"></p>
+<h2 id="配置tomcat"><a href="#配置tomcat" class="headerlink" title="配置tomcat"></a>配置tomcat</h2><p>这里的配置和上篇文章提到的配置是一样的，只对下图这个选项做个解释，这里表示是否有具有更新功能，默认是重新启动服务，但是我们有时候修改个别class不需要重启服务，所以选择更新资源，重新编译，避免时间的浪费。<br><img src="/blog/img/ideal-tomcat-marven/set_tomcat.png" alt="选择p配置tomcatom"></p>
 
       
     </div>
