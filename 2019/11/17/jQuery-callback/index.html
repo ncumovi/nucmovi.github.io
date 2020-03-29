@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Movi Blog">
 <meta property="og:description" content="jQuery内部核心函数callback$.callback可以通过add添加回调函数，fire执行回调函数。初始化创建callback实例的时候，可以传递三个参数的组合，stopOnfalse表示如果其中一个回调函数的返回值是false,则后续的回调函数不再执行；once表示只执行一次，即add进去的回调函数只会在第一次fire的时候会执行，如果后面再继续调用fire,回调函数不会再执行；me">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-17T09:40:22.494Z">
+<meta property="og:updated_time" content="2019-11-17T12:59:25.877Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery核心功能函数之callback">
 <meta name="twitter:description" content="jQuery内部核心函数callback$.callback可以通过add添加回调函数，fire执行回调函数。初始化创建callback实例的时候，可以传递三个参数的组合，stopOnfalse表示如果其中一个回调函数的返回值是false,则后续的回调函数不再执行；once表示只执行一次，即add进去的回调函数只会在第一次fire的时候会执行，如果后面再继续调用fire,回调函数不会再执行；me">
@@ -487,7 +487,7 @@ callbacks: function(option){
         hasRun = true;
         for(index; index &lt; list.length; index++){
             //如果回调函数的返回值是false 同时又配置了stopOnfalse的时候就跳出循环
-            if(list[index].call(data[0], data[1]) == false &amp;&amp; option.stopOnfalse){
+            if(list[index].apply(data[0], data[1]) == false &amp;&amp; option.stopOnfalse){
                 break;
             };
         }
@@ -818,7 +818,7 @@ callbacks: function(option){
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

@@ -490,7 +490,7 @@ callbacks: function(option){
         hasRun = true;
         for(index; index &lt; list.length; index++){
             //如果回调函数的返回值是false 同时又配置了stopOnfalse的时候就跳出循环
-            if(list[index].call(data[0], data[1]) == false &amp;&amp; option.stopOnfalse){
+            if(list[index].apply(data[0], data[1]) == false &amp;&amp; option.stopOnfalse){
                 break;
             };
         }
@@ -3201,7 +3201,7 @@ TIME_ZONE = &apos;Asia/Shanghai&apos;
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
